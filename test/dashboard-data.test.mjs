@@ -96,6 +96,21 @@ test("build:data writes latest-five-year pedestrian casualty metadata from STATS
   });
 });
 
+test("GitHub Pages workflow verifies and publishes the static dashboard artifact", async () => {
+  const workflow = await readFile(".github/workflows/pages.yml", "utf8");
+
+  assert.match(workflow, /pull_request:/);
+  assert.match(workflow, /push:\n\s+branches:\n\s+- main/);
+  assert.match(workflow, /run: npm test/);
+  assert.match(workflow, /run: npm run build:data/);
+  assert.match(workflow, /run: npm run check/);
+  assert.match(workflow, /cp index\.html dist\//);
+  assert.match(workflow, /cp -R app outputs dist\//);
+  assert.match(workflow, /actions\/upload-pages-artifact@v3/);
+  assert.match(workflow, /actions\/deploy-pages@v4/);
+  assert.match(workflow, /github\.event_name == 'push' && github\.ref == 'refs\/heads\/main'/);
+});
+
 test("dashboard renderer smoke-renders populated metadata, patterns, and shape signals", async () => {
   const { renderDashboard } = await import("../app/src/main.js");
   const document = makeDashboardDocument();
