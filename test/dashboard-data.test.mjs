@@ -93,7 +93,7 @@ test("check fails when dashboard metadata fields have invalid types", async () =
   );
 });
 
-test("build:data keeps later-slice dashboard outputs placeholder-compatible", async () => {
+test("build:data keeps pattern output placeholder-compatible and writes shape counts", async () => {
   const rawDir = await makeTempDir("raw");
   const outputDir = await makeTempDir("output");
 
@@ -112,9 +112,9 @@ test("build:data keeps later-slice dashboard outputs placeholder-compatible", as
 
   assert.deepEqual(JSON.parse(await readFile(join(outputDir, "patterns.json"), "utf8")), []);
   assert.deepEqual(JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8")), {
-    suvCrossover: null,
-    otherPassengerCar: null,
-    unknownOrUnclassified: null,
+    suvCrossover: 0,
+    otherPassengerCar: 0,
+    unknownOrUnclassified: 1,
   });
 });
 
@@ -361,5 +361,230 @@ test("check fails when a Danger Pattern uses an inferred shape condition", async
       },
     }),
     /native STATS19/,
+  );
+});
+
+test("build:data writes Vehicle Shape Signals from reviewed taxonomy rows", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+  const taxonomyPath = join(await makeTempDir("taxonomy"), "model_shape_v1.csv");
+
+  await writeFile(
+    join(rawDir, "casualty.csv"),
+    [
+      "accident_year,casualty_class,casualty_severity,generic_make_model",
+      "2023,3,3,MODEL SUV",
+      "2023,3,2,MODEL SUV",
+      "2023,3,3,MODEL HATCH",
+      "2023,3,3,UNREVIEWED SUV",
+      "2023,3,3,UNKNOWN MODEL",
+      "2023,3,3,",
+      "2023,1,1,MODEL SUV",
+    ].join("\n"),
+  );
+  await writeFile(
+    taxonomyPath,
+    [
+      "generic_make_model,shape_class,confidence,review_status,notes,source_url",
+      "MODEL SUV,suv_crossover,high,reviewed,,",
+      "MODEL HATCH,other_passenger_car,high,reviewed,,",
+      "UNREVIEWED SUV,suv_crossover,low,unreviewed,,",
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+      MODEL_SHAPE_TAXONOMY_PATH: taxonomyPath,
+    },
+  });
+
+  const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
+
+  assert.deepEqual(shapeSignals, {
+    suvCrossover: 2,
+    otherPassengerCar: 1,
+    unknownOrUnclassified: 3,
+  });
+});
+
+test("build:data does not classify excluded taxonomy rows", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+  const taxonomyPath = join(await makeTempDir("taxonomy"), "model_shape_v1.csv");
+
+  await writeFile(
+    join(rawDir, "casualty.csv"),
+    [
+      "accident_year,casualty_class,casualty_severity,generic_make_model",
+      "2023,3,3,MODEL EXCLUDED",
+    ].join("\n"),
+  );
+  await writeFile(
+    taxonomyPath,
+    [
+      "generic_make_model,shape_class,confidence,review_status,notes,source_url",
+      "MODEL EXCLUDED,suv_crossover,high,excluded,,",
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+      MODEL_SHAPE_TAXONOMY_PATH: taxonomyPath,
+    },
+  });
+
+  const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
+
+  assert.deepEqual(shapeSignals, {
+    suvCrossover: 0,
+    otherPassengerCar: 0,
+    unknownOrUnclassified: 1,
+  });
+});
+
+test("check fails when Vehicle Shape Signals are missing a required count", async () => {
+  const outputDir = await makeTempDir("invalid-output");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 1,
+        ksiCount: 0,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(join(outputDir, "patterns.json"), "[]\n");
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 1,
+        otherPassengerCar: 0,
+      },
+      null,
+      2,
+    ),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+      },
+    }),
+    /unknownOrUnclassified/,
+  );
+});
+
+test("build:data keeps Vehicle Shape Signals out of Danger Pattern conditions", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+  const taxonomyPath = join(await makeTempDir("taxonomy"), "model_shape_v1.csv");
+  const rows = [];
+
+  for (let index = 0; index < 100; index += 1) {
+    rows.push(
+      [
+        2023,
+        3,
+        index < 20 ? 2 : 3,
+        "MODEL SUV",
+        "1",
+        "3",
+      ].join(","),
+    );
+  }
+
+  await writeFile(
+    join(rawDir, "casualty.csv"),
+    [
+      "accident_year,casualty_class,casualty_severity,generic_make_model,pedestrian_location,pedestrian_movement",
+      ...rows,
+    ].join("\n"),
+  );
+  await writeFile(
+    taxonomyPath,
+    [
+      "generic_make_model,shape_class,confidence,review_status,notes,source_url",
+      "MODEL SUV,suv_crossover,high,reviewed,,",
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+      MODEL_SHAPE_TAXONOMY_PATH: taxonomyPath,
+    },
+  });
+
+  const patterns = JSON.parse(await readFile(join(outputDir, "patterns.json"), "utf8"));
+  const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
+
+  assert.deepEqual(shapeSignals, {
+    suvCrossover: 100,
+    otherPassengerCar: 0,
+    unknownOrUnclassified: 0,
+  });
+  assert(patterns.length > 0);
+  assert(
+    patterns.every((pattern) =>
+      pattern.conditions.every((condition) => condition.field !== "generic_make_model"),
+    ),
+  );
+});
+
+test("check fails when Vehicle Shape Signals include an unsupported class", async () => {
+  const outputDir = await makeTempDir("invalid-output");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 1,
+        ksiCount: 0,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(join(outputDir, "patterns.json"), "[]\n");
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 1,
+        otherPassengerCar: 0,
+        unknownOrUnclassified: 0,
+        heavyGoodsVehicle: 1,
+      },
+      null,
+      2,
+    ),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+      },
+    }),
+    /unsupported shape signal/,
   );
 });
