@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pedestrian Danger Patterns</title>
+    <link rel="stylesheet" href="app/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <p class="eyebrow">STATS19 pedestrian casualty analysis</p>
+        <h1>Pedestrian Danger Patterns</h1>
+        <p class="lede">
+          A dashboard for pooled, latest-five-year STATS19 pedestrian casualty
+          evidence, focused on KSI harm, native road context, and separate
+          vehicle-shape signals.
+        </p>
+      </header>
+
+      <nav class="tabs" aria-label="Dashboard sections">
+        <a href="#danger-patterns">Danger Patterns</a>
+        <a href="#vehicle-shape">Vehicle Shape Signals</a>
+        <a href="#evidence">Evidence</a>
+      </nav>
+
+      <section class="summary" id="summary" aria-live="polite">
+        <article>
+          <span>Data period</span>
+          <strong data-field="dataPeriod">Not built yet</strong>
+        </article>
+        <article>
+          <span>Pedestrian casualties</span>
+          <strong data-field="casualtyCount">-</strong>
+        </article>
+        <article>
+          <span>KSI casualties</span>
+          <strong data-field="ksiCount">-</strong>
+        </article>
+      </section>
+
+      <section class="panel" id="danger-patterns">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Native STATS19</p>
+            <h2>Danger Patterns</h2>
+          </div>
+          <span class="status" data-field="patternStatus">Awaiting data build</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Pattern</th>
+                <th>Casualties</th>
+                <th>KSI</th>
+                <th>KSI rate</th>
+                <th>Evidence</th>
+              </tr>
+            </thead>
+            <tbody id="patterns-body">
+              <tr>
+                <td colspan="5">Run the data pipeline to generate ranked patterns.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="vehicle-shape">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Inferred model-family shape</p>
+            <h2>Vehicle Shape Signals</h2>
+          </div>
+          <span class="status">Reviewed taxonomy only</span>
+        </div>
+        <div class="shape-grid" id="shape-grid">
+          <article>
+            <span>SUV/crossover</span>
+            <strong>-</strong>
+          </article>
+          <article>
+            <span>Other passenger car</span>
+            <strong>-</strong>
+          </article>
+          <article>
+            <span>Unknown or unclassified</span>
+            <strong>-</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="evidence">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Caveats</p>
+            <h2>Evidence Rules</h2>
+          </div>
+        </div>
+        <ul class="rules">
+          <li>Primary row is one pedestrian casualty record.</li>
+          <li>Headline harm metric is KSI casualties: fatal plus serious.</li>
+          <li>Danger Patterns use native STATS19 fields only.</li>
+          <li>Vehicle shape is inferred only from reviewed taxonomy rows.</li>
+          <li>Ranked patterns require at least 100 casualties and 20 KSI casualties.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module" src="app/src/main.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,4 @@
+generic_make_model,shape_class,confidence,review_status,notes,source_url
+-1,unknown_or_unclassified,high,excluded,Missing in STATS19,
+MAKE AND MODEL REDACTED,unknown_or_unclassified,high,excluded,Redacted in STATS19,
+

@@ -1,0 +1,11 @@
+{
+  "name": "stats19-pedestrian-danger",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:data": "node scripts/build/build-dashboard-data.mjs",
+    "check": "node scripts/check/check-outputs.mjs"
+  }
+}
+

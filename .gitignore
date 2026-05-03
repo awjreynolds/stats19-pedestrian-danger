@@ -1,0 +1,10 @@
+# Local raw STATS19 downloads are large and reproducible.
+data/raw/
+
+# Temporary analysis scratch space.
+.tmp/
+*.log
+
+# Dependency folders if the project later adds tooling.
+node_modules/
+
