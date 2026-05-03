@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build:data": "node scripts/build/build-dashboard-data.mjs",
-    "check": "node scripts/check/check-outputs.mjs"
+    "check": "node scripts/check/check-outputs.mjs",
+    "test": "node --test"
   }
 }
-
