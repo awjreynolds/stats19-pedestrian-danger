@@ -2,6 +2,19 @@ import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const source = "DfT STATS19 road safety open data";
+const excludedPatternFields = new Set([
+  "accident_index",
+  "accident_reference",
+  "accident_year",
+  "casualty_class",
+  "casualty_reference",
+  "casualty_ref",
+  "casualty_severity",
+  "generic_make_model",
+  "shape_class",
+  "vehicle_reference",
+  "vehicle_ref",
+]);
 const outputDir =
   process.env.DASHBOARD_OUTPUT_DIR ??
   fileURLToPath(new URL("../../outputs/dashboard/", import.meta.url));
@@ -56,20 +69,22 @@ async function readCasualtyRows() {
   return rowSets.flat();
 }
 
-function buildMetadata(rows) {
-  const rowsByYear = rows
-    .map((row) => ({
-      year: Number(row.accident_year),
-      casualtyClass: Number(row.casualty_class),
-      casualtySeverity: Number(row.casualty_severity),
-    }))
-    .filter((row) => Number.isInteger(row.year));
-
-  const latestYears = [...new Set(rowsByYear.map((row) => row.year))]
+function getLatestYears(rows) {
+  return [...new Set(rows.map((row) => Number(row.accident_year)).filter(Number.isInteger))]
     .sort((a, b) => b - a)
     .slice(0, 5)
     .sort((a, b) => a - b);
+}
 
+function getPedestrianRowsForLatestYears(rows, latestYears) {
+  const latestYearSet = new Set(latestYears);
+  return rows.filter(
+    (row) => latestYearSet.has(Number(row.accident_year)) && Number(row.casualty_class) === 3,
+  );
+}
+
+function buildMetadata(rows) {
+  const latestYears = getLatestYears(rows);
   if (!latestYears.length) {
     return {
       dataPeriod: "Awaiting STATS19 data build",
@@ -79,28 +94,88 @@ function buildMetadata(rows) {
     };
   }
 
-  const latestYearSet = new Set(latestYears);
-  const pedestrianRows = rowsByYear.filter(
-    (row) => latestYearSet.has(row.year) && row.casualtyClass === 3,
-  );
+  const pedestrianRows = getPedestrianRowsForLatestYears(rows, latestYears);
 
   return {
     dataPeriod: `${latestYears[0]}-${latestYears.at(-1)}`,
     casualtyCount: pedestrianRows.length,
-    ksiCount: pedestrianRows.filter((row) => row.casualtySeverity === 1 || row.casualtySeverity === 2)
-      .length,
+    ksiCount: pedestrianRows.filter(isKsi).length,
     source,
   };
 }
 
-const metadata = buildMetadata(await readCasualtyRows());
+function isKsi(row) {
+  const severity = Number(row.casualty_severity);
+  return severity === 1 || severity === 2;
+}
+
+function isPatternField(field) {
+  return !excludedPatternFields.has(field) && !field.toLowerCase().includes("shape");
+}
+
+function buildPatterns(rows) {
+  const pedestrianRows = getPedestrianRowsForLatestYears(rows, getLatestYears(rows));
+  if (!pedestrianRows.length) {
+    return [];
+  }
+
+  const fields = Object.keys(pedestrianRows[0]).filter(isPatternField).sort();
+  const patternMap = new Map();
+
+  for (let leftIndex = 0; leftIndex < fields.length; leftIndex += 1) {
+    for (let rightIndex = leftIndex + 1; rightIndex < fields.length; rightIndex += 1) {
+      const leftField = fields[leftIndex];
+      const rightField = fields[rightIndex];
+
+      for (const row of pedestrianRows) {
+        const leftValue = row[leftField];
+        const rightValue = row[rightField];
+        if (!leftValue || !rightValue) {
+          continue;
+        }
+
+        const key = `${leftField}\0${leftValue}\0${rightField}\0${rightValue}`;
+        const pattern = patternMap.get(key) ?? {
+          label: `${leftField} = ${leftValue} + ${rightField} = ${rightValue}`,
+          conditions: [
+            { field: leftField, value: leftValue },
+            { field: rightField, value: rightValue },
+          ],
+          casualtyCount: 0,
+          ksiCount: 0,
+          ksiRate: 0,
+          evidenceLabel: "insufficient_sample",
+        };
+
+        pattern.casualtyCount += 1;
+        if (isKsi(row)) {
+          pattern.ksiCount += 1;
+        }
+        patternMap.set(key, pattern);
+      }
+    }
+  }
+
+  return [...patternMap.values()]
+    .map((pattern) => ({
+      ...pattern,
+      ksiRate: pattern.casualtyCount === 0 ? 0 : pattern.ksiCount / pattern.casualtyCount,
+      evidenceLabel:
+        pattern.casualtyCount >= 100 && pattern.ksiCount >= 20 ? "stable" : "insufficient_sample",
+    }))
+    .sort((a, b) => b.ksiCount - a.ksiCount || b.casualtyCount - a.casualtyCount || a.label.localeCompare(b.label));
+}
+
+const casualtyRows = await readCasualtyRows();
+const metadata = buildMetadata(casualtyRows);
+const patterns = buildPatterns(casualtyRows);
 
 await writeFile(
   new URL("metadata.json", outputDirUrl),
   `${JSON.stringify(metadata, null, 2)}\n`,
 );
 
-await writeFile(new URL("patterns.json", outputDirUrl), "[]\n");
+await writeFile(new URL("patterns.json", outputDirUrl), `${JSON.stringify(patterns, null, 2)}\n`);
 
 await writeFile(
   new URL("shape-signals.json", outputDirUrl),
