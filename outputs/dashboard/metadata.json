@@ -1,6 +1,6 @@
 {
-  "dataPeriod": "Awaiting STATS19 data build",
-  "casualtyCount": null,
-  "ksiCount": null,
+  "dataPeriod": "2020-2024",
+  "casualtyCount": 89170,
+  "ksiCount": 27148,
   "source": "DfT STATS19 road safety open data"
 }

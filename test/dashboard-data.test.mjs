@@ -96,12 +96,47 @@ test("build:data writes latest-five-year pedestrian casualty metadata from STATS
   });
 });
 
+test("build:data accepts current DfT casualty files that use collision_year", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+
+  await writeFile(
+    join(rawDir, "casualties.csv"),
+    [
+      "collision_year,casualty_class,casualty_severity,pedestrian_location,pedestrian_movement",
+      "2020,3,2,1,3",
+      "2021,3,3,1,3",
+      "2022,3,1,1,3",
+      "2023,3,3,1,3",
+      "2024,3,2,1,3",
+      "2024,1,1,1,3",
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+    },
+  });
+
+  const metadata = JSON.parse(await readFile(join(outputDir, "metadata.json"), "utf8"));
+  const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
+
+  assert.equal(metadata.dataPeriod, "2020-2024");
+  assert.equal(metadata.casualtyCount, 5);
+  assert.equal(metadata.ksiCount, 3);
+  assert.equal(shapeSignals.unknownOrUnclassified, 5);
+});
+
 test("GitHub Pages workflow verifies and publishes the static dashboard artifact", async () => {
   const workflow = await readFile(".github/workflows/pages.yml", "utf8");
 
   assert.match(workflow, /pull_request:/);
   assert.match(workflow, /push:\n\s+branches:\n\s+- main/);
   assert.match(workflow, /run: npm test/);
+  assert.match(workflow, /run: npm run download:data/);
   assert.match(workflow, /run: npm run build:data/);
   assert.match(workflow, /run: npm run check/);
   assert.match(workflow, /cp index\.html dist\//);
@@ -369,6 +404,46 @@ test("build:data ranks Danger Patterns by KSI harm with deterministic ties", asy
       "pedestrian_location = z + pedestrian_movement = 9",
     ],
   );
+});
+
+test("build:data keeps Danger Pattern output compact for the static dashboard", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+  const rows = [];
+
+  for (let patternIndex = 0; patternIndex < 60; patternIndex += 1) {
+    for (let rowIndex = 0; rowIndex < 100; rowIndex += 1) {
+      rows.push(
+        [
+          2023,
+          3,
+          rowIndex < 20 ? 2 : 3,
+          `location_${patternIndex}`,
+          "3",
+        ].join(","),
+      );
+    }
+  }
+
+  await writeFile(
+    join(rawDir, "casualty.csv"),
+    [
+      "accident_year,casualty_class,casualty_severity,pedestrian_location,pedestrian_movement",
+      ...rows,
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+    },
+  });
+
+  const patterns = JSON.parse(await readFile(join(outputDir, "patterns.json"), "utf8"));
+
+  assert.equal(patterns.length, 50);
 });
 
 test("check fails when a Danger Pattern evidence label contradicts thresholds", async () => {
@@ -926,6 +1001,58 @@ test("check fails when a Danger Pattern KSI rate does not match its counts", asy
       },
     }),
     /ksiRate/,
+  );
+});
+
+test("check fails when Danger Pattern output is too large for the static dashboard", async () => {
+  const outputDir = await makeTempDir("invalid-output");
+  const patterns = Array.from({ length: 51 }, (_, index) => ({
+    label: `pedestrian_location = ${index} + pedestrian_movement = 3`,
+    conditions: [
+      { field: "pedestrian_location", value: String(index) },
+      { field: "pedestrian_movement", value: "3" },
+    ],
+    casualtyCount: 100,
+    ksiCount: 20,
+    ksiRate: 0.2,
+    evidenceLabel: "stable",
+  }));
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 5100,
+        ksiCount: 1020,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(join(outputDir, "patterns.json"), `${JSON.stringify(patterns, null, 2)}\n`);
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 10,
+        otherPassengerCar: 70,
+        unknownOrUnclassified: 20,
+      },
+      null,
+      2,
+    ),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+      },
+    }),
+    /at most 50/,
   );
 });
 

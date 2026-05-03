@@ -1,1 +1,852 @@
-[]
+[
+  {
+    "label": "bus_or_coach_passenger = 0 + casualty_type = 0",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_type",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 89170,
+    "ksiCount": 27148,
+    "ksiRate": 0.304452170012336,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + casualty_adjusted_severity_slight = 0",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 27148,
+    "ksiCount": 27148,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_slight = 0 + casualty_type = 0",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      },
+      {
+        "field": "casualty_type",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 27148,
+    "ksiCount": 27148,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + car_passenger = 0",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "car_passenger",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 89168,
+    "ksiCount": 27147,
+    "ksiRate": 0.30444778395837074,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + casualty_type = 0",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_type",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 89168,
+    "ksiCount": 27147,
+    "ksiRate": 0.30444778395837074,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + casualty_adjusted_severity_slight = 0",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 27147,
+    "ksiCount": 27147,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + casualty_adjusted_severity_serious = 1",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 25242,
+    "ksiCount": 25242,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_serious = 1 + casualty_adjusted_severity_slight = 0",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      },
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 25242,
+    "ksiCount": 25242,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_serious = 1 + casualty_type = 0",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      },
+      {
+        "field": "casualty_type",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 25242,
+    "ksiCount": 25242,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + casualty_adjusted_severity_serious = 1",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 25241,
+    "ksiCount": 25241,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + casualty_distance_banding = -1",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_distance_banding",
+        "value": "-1"
+      }
+    ],
+    "casualtyCount": 73278,
+    "ksiCount": 22231,
+    "ksiRate": 0.30337891317994486,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_distance_banding = -1 + casualty_type = 0",
+    "conditions": [
+      {
+        "field": "casualty_distance_banding",
+        "value": "-1"
+      },
+      {
+        "field": "casualty_type",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 73278,
+    "ksiCount": 22231,
+    "ksiRate": 0.30337891317994486,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_slight = 0 + casualty_distance_banding = -1",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      },
+      {
+        "field": "casualty_distance_banding",
+        "value": "-1"
+      }
+    ],
+    "casualtyCount": 22231,
+    "ksiCount": 22231,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + casualty_distance_banding = -1",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_distance_banding",
+        "value": "-1"
+      }
+    ],
+    "casualtyCount": 73276,
+    "ksiCount": 22230,
+    "ksiRate": 0.3033735465909711,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_serious = 1 + casualty_distance_banding = -1",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      },
+      {
+        "field": "casualty_distance_banding",
+        "value": "-1"
+      }
+    ],
+    "casualtyCount": 20626,
+    "ksiCount": 20626,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + pedestrian_road_maintenance_worker = 0",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "pedestrian_road_maintenance_worker",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 69117,
+    "ksiCount": 20599,
+    "ksiRate": 0.2980308751826613,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_type = 0 + pedestrian_road_maintenance_worker = 0",
+    "conditions": [
+      {
+        "field": "casualty_type",
+        "value": "0"
+      },
+      {
+        "field": "pedestrian_road_maintenance_worker",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 69117,
+    "ksiCount": 20599,
+    "ksiRate": 0.2980308751826613,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_slight = 0 + pedestrian_road_maintenance_worker = 0",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      },
+      {
+        "field": "pedestrian_road_maintenance_worker",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 20599,
+    "ksiCount": 20599,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + pedestrian_road_maintenance_worker = 0",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "pedestrian_road_maintenance_worker",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 69115,
+    "ksiCount": 20598,
+    "ksiRate": 0.29802503074585834,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_serious = 1 + pedestrian_road_maintenance_worker = 0",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      },
+      {
+        "field": "pedestrian_road_maintenance_worker",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 19133,
+    "ksiCount": 19133,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_distance_banding = -1 + pedestrian_road_maintenance_worker = 0",
+    "conditions": [
+      {
+        "field": "casualty_distance_banding",
+        "value": "-1"
+      },
+      {
+        "field": "pedestrian_road_maintenance_worker",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 62388,
+    "ksiCount": 18781,
+    "ksiRate": 0.3010354555363211,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + casualty_injury_based = 1",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_injury_based",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 51657,
+    "ksiCount": 16991,
+    "ksiRate": 0.32891960431306505,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + casualty_injury_based = 1",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "casualty_injury_based",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 51657,
+    "ksiCount": 16991,
+    "ksiRate": 0.32891960431306505,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_injury_based = 1 + casualty_type = 0",
+    "conditions": [
+      {
+        "field": "casualty_injury_based",
+        "value": "1"
+      },
+      {
+        "field": "casualty_type",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 51657,
+    "ksiCount": 16991,
+    "ksiRate": 0.32891960431306505,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_slight = 0 + casualty_injury_based = 1",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      },
+      {
+        "field": "casualty_injury_based",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 16991,
+    "ksiCount": 16991,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_serious = 1 + casualty_injury_based = 1",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      },
+      {
+        "field": "casualty_injury_based",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 15778,
+    "ksiCount": 15778,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + sex_of_casualty = 1",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 48847,
+    "ksiCount": 15523,
+    "ksiRate": 0.3177881957950335,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_type = 0 + sex_of_casualty = 1",
+    "conditions": [
+      {
+        "field": "casualty_type",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 48847,
+    "ksiCount": 15523,
+    "ksiRate": 0.3177881957950335,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_slight = 0 + sex_of_casualty = 1",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 15523,
+    "ksiCount": 15523,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + sex_of_casualty = 1",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 48845,
+    "ksiCount": 15522,
+    "ksiRate": 0.3177807349779916,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_serious = 1 + sex_of_casualty = 1",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 14222,
+    "ksiCount": 14222,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_distance_banding = -1 + casualty_injury_based = 1",
+    "conditions": [
+      {
+        "field": "casualty_distance_banding",
+        "value": "-1"
+      },
+      {
+        "field": "casualty_injury_based",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 38714,
+    "ksiCount": 12902,
+    "ksiRate": 0.3332644521361781,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_distance_banding = -1 + sex_of_casualty = 1",
+    "conditions": [
+      {
+        "field": "casualty_distance_banding",
+        "value": "-1"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 40285,
+    "ksiCount": 12765,
+    "ksiRate": 0.31686732034255927,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "pedestrian_road_maintenance_worker = 0 + sex_of_casualty = 1",
+    "conditions": [
+      {
+        "field": "pedestrian_road_maintenance_worker",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "1"
+      }
+    ],
+    "casualtyCount": 37244,
+    "ksiCount": 11604,
+    "ksiRate": 0.31156696380625065,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + sex_of_casualty = 2",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "2"
+      }
+    ],
+    "casualtyCount": 40043,
+    "ksiCount": 11602,
+    "ksiRate": 0.28973853107909,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + sex_of_casualty = 2",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "2"
+      }
+    ],
+    "casualtyCount": 40043,
+    "ksiCount": 11602,
+    "ksiRate": 0.28973853107909,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_type = 0 + sex_of_casualty = 2",
+    "conditions": [
+      {
+        "field": "casualty_type",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "2"
+      }
+    ],
+    "casualtyCount": 40043,
+    "ksiCount": 11602,
+    "ksiRate": 0.28973853107909,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_slight = 0 + sex_of_casualty = 2",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "2"
+      }
+    ],
+    "casualtyCount": 11602,
+    "ksiCount": 11602,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + enhanced_casualty_severity = 7",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "enhanced_casualty_severity",
+        "value": "7"
+      }
+    ],
+    "casualtyCount": 11018,
+    "ksiCount": 11018,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + enhanced_casualty_severity = 7",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "enhanced_casualty_severity",
+        "value": "7"
+      }
+    ],
+    "casualtyCount": 11018,
+    "ksiCount": 11018,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_serious = 1 + enhanced_casualty_severity = 7",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      },
+      {
+        "field": "enhanced_casualty_severity",
+        "value": "7"
+      }
+    ],
+    "casualtyCount": 11018,
+    "ksiCount": 11018,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_slight = 0 + enhanced_casualty_severity = 7",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      },
+      {
+        "field": "enhanced_casualty_severity",
+        "value": "7"
+      }
+    ],
+    "casualtyCount": 11018,
+    "ksiCount": 11018,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_injury_based = 1 + enhanced_casualty_severity = 7",
+    "conditions": [
+      {
+        "field": "casualty_injury_based",
+        "value": "1"
+      },
+      {
+        "field": "enhanced_casualty_severity",
+        "value": "7"
+      }
+    ],
+    "casualtyCount": 11018,
+    "ksiCount": 11018,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_type = 0 + enhanced_casualty_severity = 7",
+    "conditions": [
+      {
+        "field": "casualty_type",
+        "value": "0"
+      },
+      {
+        "field": "enhanced_casualty_severity",
+        "value": "7"
+      }
+    ],
+    "casualtyCount": 11018,
+    "ksiCount": 11018,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_serious = 1 + sex_of_casualty = 2",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_serious",
+        "value": "1"
+      },
+      {
+        "field": "sex_of_casualty",
+        "value": "2"
+      }
+    ],
+    "casualtyCount": 10997,
+    "ksiCount": 10997,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "bus_or_coach_passenger = 0 + pedestrian_location = 5",
+    "conditions": [
+      {
+        "field": "bus_or_coach_passenger",
+        "value": "0"
+      },
+      {
+        "field": "pedestrian_location",
+        "value": "5"
+      }
+    ],
+    "casualtyCount": 33016,
+    "ksiCount": 10636,
+    "ksiRate": 0.32214683789677734,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_type = 0 + pedestrian_location = 5",
+    "conditions": [
+      {
+        "field": "casualty_type",
+        "value": "0"
+      },
+      {
+        "field": "pedestrian_location",
+        "value": "5"
+      }
+    ],
+    "casualtyCount": 33016,
+    "ksiCount": 10636,
+    "ksiRate": 0.32214683789677734,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_adjusted_severity_slight = 0 + pedestrian_location = 5",
+    "conditions": [
+      {
+        "field": "casualty_adjusted_severity_slight",
+        "value": "0"
+      },
+      {
+        "field": "pedestrian_location",
+        "value": "5"
+      }
+    ],
+    "casualtyCount": 10636,
+    "ksiCount": 10636,
+    "ksiRate": 1,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "car_passenger = 0 + pedestrian_location = 5",
+    "conditions": [
+      {
+        "field": "car_passenger",
+        "value": "0"
+      },
+      {
+        "field": "pedestrian_location",
+        "value": "5"
+      }
+    ],
+    "casualtyCount": 33015,
+    "ksiCount": 10635,
+    "ksiRate": 0.32212630622444344,
+    "evidenceLabel": "stable"
+  },
+  {
+    "label": "casualty_injury_based = 1 + pedestrian_road_maintenance_worker = 0",
+    "conditions": [
+      {
+        "field": "casualty_injury_based",
+        "value": "1"
+      },
+      {
+        "field": "pedestrian_road_maintenance_worker",
+        "value": "0"
+      }
+    ],
+    "casualtyCount": 31734,
+    "ksiCount": 10471,
+    "ksiRate": 0.3299615554295078,
+    "evidenceLabel": "stable"
+  }
+]

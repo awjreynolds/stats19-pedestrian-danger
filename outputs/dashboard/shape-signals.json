@@ -1,5 +1,5 @@
 {
-  "suvCrossover": null,
-  "otherPassengerCar": null,
-  "unknownOrUnclassified": null
+  "suvCrossover": 0,
+  "otherPassengerCar": 0,
+  "unknownOrUnclassified": 89170
 }

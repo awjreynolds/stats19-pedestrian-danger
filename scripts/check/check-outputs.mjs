@@ -21,6 +21,7 @@ const dashboardHtml = await readFile(indexPath, "utf8");
 const dashboardFiles = ["metadata.json", "patterns.json", "shape-signals.json"];
 const inferredPatternFields = new Set(["generic_make_model", "shape_class"]);
 const shapeSignalFields = ["suvCrossover", "otherPassengerCar", "unknownOrUnclassified"];
+const maxDashboardPatterns = 50;
 
 for (const file of dashboardFiles) {
   await readFile(new URL(file, outputDirUrl), "utf8");
@@ -85,6 +86,9 @@ function assertNativePatternCondition(condition) {
 
 if (!Array.isArray(patterns)) {
   throw new Error("patterns must be an array");
+}
+if (patterns.length > maxDashboardPatterns) {
+  throw new Error(`patterns must contain at most ${maxDashboardPatterns} dashboard rows`);
 }
 
 for (const [index, pattern] of patterns.entries()) {
