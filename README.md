@@ -2,6 +2,8 @@
 
 Pedestrian danger patterns dashboard built from DfT STATS19 road safety data.
 
+Published dashboard: https://awjreynolds.github.io/stats19-pedestrian-danger/
+
 ## Scope
 
 - Analyse pedestrian casualty records from the latest five validated STATS19 years.
@@ -18,3 +20,9 @@ Pedestrian danger patterns dashboard built from DfT STATS19 road safety data.
 - `outputs/dashboard/` - generated compact dashboard data.
 - `outputs/taxonomy_review/` - generated taxonomy review candidates.
 - `scripts/` - download and build pipeline scripts.
+
+## Publishing
+
+GitHub Actions verifies the dashboard on pull requests. Pushes to `main` run the
+same checks, rebuild `outputs/dashboard/`, and publish the static site to GitHub
+Pages.
