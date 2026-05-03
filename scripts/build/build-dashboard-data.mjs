@@ -2,10 +2,14 @@ import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const source = "DfT STATS19 road safety open data";
+const maxDashboardPatterns = 50;
 const excludedPatternFields = new Set([
   "accident_index",
   "accident_reference",
   "accident_year",
+  "collision_index",
+  "collision_ref_no",
+  "collision_year",
   "casualty_class",
   "casualty_reference",
   "casualty_ref",
@@ -46,7 +50,7 @@ function parseCsv(text) {
 function hasCasualtyColumns(rows) {
   return rows.some(
     (row) =>
-      Object.hasOwn(row, "accident_year") &&
+      getYear(row) !== null &&
       Object.hasOwn(row, "casualty_class") &&
       Object.hasOwn(row, "casualty_severity"),
   );
@@ -85,16 +89,21 @@ async function readTaxonomyRows() {
 }
 
 function getLatestYears(rows) {
-  return [...new Set(rows.map((row) => Number(row.accident_year)).filter(Number.isInteger))]
+  return [...new Set(rows.map(getYear).filter(Number.isInteger))]
     .sort((a, b) => b - a)
     .slice(0, 5)
     .sort((a, b) => a - b);
 }
 
+function getYear(row) {
+  const year = Number(row.accident_year ?? row.collision_year);
+  return Number.isInteger(year) ? year : null;
+}
+
 function getPedestrianRowsForLatestYears(rows, latestYears) {
   const latestYearSet = new Set(latestYears);
   return rows.filter(
-    (row) => latestYearSet.has(Number(row.accident_year)) && Number(row.casualty_class) === 3,
+    (row) => latestYearSet.has(getYear(row)) && Number(row.casualty_class) === 3,
   );
 }
 
@@ -178,7 +187,8 @@ function buildPatterns(rows) {
       evidenceLabel:
         pattern.casualtyCount >= 100 && pattern.ksiCount >= 20 ? "stable" : "insufficient_sample",
     }))
-    .sort((a, b) => b.ksiCount - a.ksiCount || b.casualtyCount - a.casualtyCount || a.label.localeCompare(b.label));
+    .sort((a, b) => b.ksiCount - a.ksiCount || b.casualtyCount - a.casualtyCount || a.label.localeCompare(b.label))
+    .slice(0, maxDashboardPatterns);
 }
 
 function buildReviewedShapeLookup(taxonomyRows) {

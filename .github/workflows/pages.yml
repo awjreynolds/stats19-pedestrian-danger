@@ -31,6 +31,9 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Download STATS19 data
+        run: npm run download:data
+
       - name: Build dashboard data
         run: npm run build:data
 

@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "download:data": "node scripts/download/download-stats19-data.mjs",
     "build:data": "node scripts/build/build-dashboard-data.mjs",
     "check": "node scripts/check/check-outputs.mjs",
     "test": "node --test"
