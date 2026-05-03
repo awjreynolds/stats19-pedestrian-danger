@@ -16,6 +16,7 @@ for (const file of requiredFiles) {
 
 const dashboardFiles = ["metadata.json", "patterns.json", "shape-signals.json"];
 const inferredPatternFields = new Set(["generic_make_model", "shape_class"]);
+const shapeSignalFields = ["suvCrossover", "otherPassengerCar", "unknownOrUnclassified"];
 
 for (const file of dashboardFiles) {
   await readFile(new URL(file, outputDirUrl), "utf8");
@@ -26,6 +27,9 @@ const metadata = JSON.parse(
 );
 const patterns = JSON.parse(
   await readFile(new URL("patterns.json", outputDirUrl), "utf8"),
+);
+const shapeSignals = JSON.parse(
+  await readFile(new URL("shape-signals.json", outputDirUrl), "utf8"),
 );
 
 function assertStringField(value, field) {
@@ -83,6 +87,16 @@ for (const [index, pattern] of patterns.entries()) {
   assertNumberField(pattern.ksiRate, "ksiRate");
   if (pattern.evidenceLabel !== expectedEvidenceLabel(pattern)) {
     throw new Error(`pattern.evidenceLabel contradicts sample thresholds`);
+  }
+}
+
+for (const field of shapeSignalFields) {
+  assertCountField(shapeSignals[field], field);
+}
+
+for (const field of Object.keys(shapeSignals)) {
+  if (!shapeSignalFields.includes(field)) {
+    throw new Error(`unsupported shape signal field: ${field}`);
   }
 }
 

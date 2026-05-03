@@ -21,8 +21,12 @@ const outputDir =
 const rawDir =
   process.env.STATS19_RAW_DIR ??
   fileURLToPath(new URL("../../data/raw/", import.meta.url));
+const taxonomyPath =
+  process.env.MODEL_SHAPE_TAXONOMY_PATH ??
+  fileURLToPath(new URL("../../data/taxonomies/model_shape_v1.csv", import.meta.url));
 const outputDirUrl = pathToFileURL(`${outputDir}/`);
 const rawDirUrl = pathToFileURL(`${rawDir}/`);
+const taxonomyUrl = pathToFileURL(taxonomyPath);
 
 await mkdir(outputDir, { recursive: true });
 
@@ -67,6 +71,17 @@ async function readCasualtyRows() {
     }),
   );
   return rowSets.flat();
+}
+
+async function readTaxonomyRows() {
+  try {
+    return parseCsv(await readFile(taxonomyUrl, "utf8"));
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      return [];
+    }
+    throw error;
+  }
 }
 
 function getLatestYears(rows) {
@@ -166,9 +181,50 @@ function buildPatterns(rows) {
     .sort((a, b) => b.ksiCount - a.ksiCount || b.casualtyCount - a.casualtyCount || a.label.localeCompare(b.label));
 }
 
+function buildReviewedShapeLookup(taxonomyRows) {
+  return new Map(
+    taxonomyRows
+      .filter((row) => row.review_status === "reviewed")
+      .map((row) => [row.generic_make_model, row.shape_class]),
+  );
+}
+
+function buildShapeSignals(rows, taxonomyRows) {
+  const pedestrianRows = getPedestrianRowsForLatestYears(rows, getLatestYears(rows));
+  if (!pedestrianRows.length) {
+    return {
+      suvCrossover: null,
+      otherPassengerCar: null,
+      unknownOrUnclassified: null,
+    };
+  }
+
+  const reviewedShapeLookup = buildReviewedShapeLookup(taxonomyRows);
+  const shapeSignals = {
+    suvCrossover: 0,
+    otherPassengerCar: 0,
+    unknownOrUnclassified: 0,
+  };
+
+  for (const row of pedestrianRows) {
+    const shapeClass = reviewedShapeLookup.get(row.generic_make_model);
+    if (shapeClass === "suv_crossover") {
+      shapeSignals.suvCrossover += 1;
+    } else if (shapeClass === "other_passenger_car") {
+      shapeSignals.otherPassengerCar += 1;
+    } else {
+      shapeSignals.unknownOrUnclassified += 1;
+    }
+  }
+
+  return shapeSignals;
+}
+
 const casualtyRows = await readCasualtyRows();
+const taxonomyRows = await readTaxonomyRows();
 const metadata = buildMetadata(casualtyRows);
 const patterns = buildPatterns(casualtyRows);
+const shapeSignals = buildShapeSignals(casualtyRows, taxonomyRows);
 
 await writeFile(
   new URL("metadata.json", outputDirUrl),
@@ -179,15 +235,7 @@ await writeFile(new URL("patterns.json", outputDirUrl), `${JSON.stringify(patter
 
 await writeFile(
   new URL("shape-signals.json", outputDirUrl),
-  `${JSON.stringify(
-    {
-      suvCrossover: null,
-      otherPassengerCar: null,
-      unknownOrUnclassified: null,
-    },
-    null,
-    2,
-  )}\n`,
+  `${JSON.stringify(shapeSignals, null, 2)}\n`,
 );
 
 console.log("Wrote dashboard outputs.");
