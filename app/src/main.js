@@ -4,11 +4,6 @@ const percentFormatter = new Intl.NumberFormat("en-GB", {
   style: "percent",
 });
 
-const fields = [...document.querySelectorAll("[data-field]")].reduce((acc, node) => {
-  acc[node.dataset.field] = node;
-  return acc;
-}, {});
-
 async function loadJson(path) {
   const response = await fetch(path);
   if (!response.ok) {
@@ -21,14 +16,21 @@ function formatCount(value) {
   return Number.isFinite(value) ? numberFormatter.format(value) : "-";
 }
 
-function renderMetadata(metadata) {
+function getFields(documentRef) {
+  return [...documentRef.querySelectorAll("[data-field]")].reduce((acc, node) => {
+    acc[node.dataset.field] = node;
+    return acc;
+  }, {});
+}
+
+function renderMetadata(fields, metadata) {
   fields.dataPeriod.textContent = metadata.dataPeriod ?? "Not built yet";
   fields.casualtyCount.textContent = formatCount(metadata.casualtyCount);
   fields.ksiCount.textContent = formatCount(metadata.ksiCount);
 }
 
-function renderPatterns(patterns) {
-  const body = document.querySelector("#patterns-body");
+function renderPatterns(documentRef, fields, patterns) {
+  const body = documentRef.querySelector("#patterns-body");
   if (!patterns.length) {
     fields.patternStatus.textContent = "No ranked patterns yet";
     return;
@@ -37,7 +39,7 @@ function renderPatterns(patterns) {
   fields.patternStatus.textContent = `${patterns.length} ranked patterns`;
   body.replaceChildren(
     ...patterns.map((pattern) => {
-      const row = document.createElement("tr");
+      const row = documentRef.createElement("tr");
       const rate = Number.isFinite(pattern.ksiRate)
         ? percentFormatter.format(pattern.ksiRate)
         : "-";
@@ -53,8 +55,8 @@ function renderPatterns(patterns) {
   );
 }
 
-function renderShapeSignals(shapeSignals) {
-  const cells = document.querySelectorAll("#shape-grid article strong");
+function renderShapeSignals(documentRef, shapeSignals) {
+  const cells = documentRef.querySelectorAll("#shape-grid article strong");
   const values = [
     shapeSignals.suvCrossover,
     shapeSignals.otherPassengerCar,
@@ -65,6 +67,14 @@ function renderShapeSignals(shapeSignals) {
   });
 }
 
+export function renderDashboard(documentRef, { metadata, patterns, shapeSignals }) {
+  const fields = getFields(documentRef);
+
+  renderMetadata(fields, metadata);
+  renderPatterns(documentRef, fields, patterns);
+  renderShapeSignals(documentRef, shapeSignals);
+}
+
 async function main() {
   try {
     const [metadata, patterns, shapeSignals] = await Promise.all([
@@ -72,14 +82,14 @@ async function main() {
       loadJson("outputs/dashboard/patterns.json"),
       loadJson("outputs/dashboard/shape-signals.json"),
     ]);
-    renderMetadata(metadata);
-    renderPatterns(patterns);
-    renderShapeSignals(shapeSignals);
+    renderDashboard(document, { metadata, patterns, shapeSignals });
   } catch (error) {
+    const fields = getFields(document);
     fields.patternStatus.textContent = "Data unavailable";
     console.error(error);
   }
 }
 
-main();
-
+if (typeof document !== "undefined") {
+  main();
+}

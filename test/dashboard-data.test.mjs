@@ -14,6 +14,50 @@ async function makeTempDir(name) {
   return dir;
 }
 
+function makeDashboardDocument() {
+  const fields = Object.fromEntries(
+    ["dataPeriod", "casualtyCount", "ksiCount", "patternStatus"].map((field) => [
+      field,
+      { dataset: { field }, textContent: "" },
+    ]),
+  );
+  const shapeCells = [{ textContent: "" }, { textContent: "" }, { textContent: "" }];
+  const patternsBody = {
+    children: [{ innerHTML: "placeholder" }],
+    replaceChildren(...children) {
+      this.children = children;
+    },
+  };
+  const createdRows = [];
+
+  return {
+    createdRows,
+    fields,
+    patternsBody,
+    shapeCells,
+    createElement(tagName) {
+      const row = { tagName, innerHTML: "" };
+      createdRows.push(row);
+      return row;
+    },
+    querySelector(selector) {
+      if (selector === "#patterns-body") {
+        return patternsBody;
+      }
+      throw new Error(`Unexpected selector: ${selector}`);
+    },
+    querySelectorAll(selector) {
+      if (selector === "[data-field]") {
+        return Object.values(fields);
+      }
+      if (selector === "#shape-grid article strong") {
+        return shapeCells;
+      }
+      throw new Error(`Unexpected selector: ${selector}`);
+    },
+  };
+}
+
 test("build:data writes latest-five-year pedestrian casualty metadata from STATS19 casualty rows", async () => {
   const rawDir = await makeTempDir("raw");
   const outputDir = await makeTempDir("output");
@@ -50,6 +94,73 @@ test("build:data writes latest-five-year pedestrian casualty metadata from STATS
     ksiCount: 2,
     source: "DfT STATS19 road safety open data",
   });
+});
+
+test("dashboard renderer smoke-renders populated metadata, patterns, and shape signals", async () => {
+  const { renderDashboard } = await import("../app/src/main.js");
+  const document = makeDashboardDocument();
+
+  renderDashboard(document, {
+    metadata: {
+      dataPeriod: "2019-2023",
+      casualtyCount: 1234,
+      ksiCount: 56,
+    },
+    patterns: [
+      {
+        label: "pedestrian_location = 1 + pedestrian_movement = 3",
+        casualtyCount: 100,
+        ksiCount: 20,
+        ksiRate: 0.2,
+        evidenceLabel: "stable",
+      },
+    ],
+    shapeSignals: {
+      suvCrossover: 10,
+      otherPassengerCar: 70,
+      unknownOrUnclassified: 20,
+    },
+  });
+
+  assert.equal(document.fields.dataPeriod.textContent, "2019-2023");
+  assert.equal(document.fields.casualtyCount.textContent, "1,234");
+  assert.equal(document.fields.ksiCount.textContent, "56");
+  assert.equal(document.fields.patternStatus.textContent, "1 ranked patterns");
+  assert.equal(document.patternsBody.children.length, 1);
+  assert.match(document.patternsBody.children[0].innerHTML, /pedestrian_location = 1/);
+  assert.match(document.patternsBody.children[0].innerHTML, /20%/);
+  assert.deepEqual(
+    document.shapeCells.map((cell) => cell.textContent),
+    ["10", "70", "20"],
+  );
+});
+
+test("dashboard renderer smoke-renders empty dashboard outputs", async () => {
+  const { renderDashboard } = await import("../app/src/main.js");
+  const document = makeDashboardDocument();
+
+  renderDashboard(document, {
+    metadata: {
+      dataPeriod: "Not built yet",
+      casualtyCount: null,
+      ksiCount: null,
+    },
+    patterns: [],
+    shapeSignals: {
+      suvCrossover: null,
+      otherPassengerCar: null,
+      unknownOrUnclassified: null,
+    },
+  });
+
+  assert.equal(document.fields.dataPeriod.textContent, "Not built yet");
+  assert.equal(document.fields.casualtyCount.textContent, "-");
+  assert.equal(document.fields.ksiCount.textContent, "-");
+  assert.equal(document.fields.patternStatus.textContent, "No ranked patterns yet");
+  assert.deepEqual(
+    document.shapeCells.map((cell) => cell.textContent),
+    ["-", "-", "-"],
+  );
 });
 
 test("check fails when dashboard metadata fields have invalid types", async () => {
@@ -586,5 +697,259 @@ test("check fails when Vehicle Shape Signals include an unsupported class", asyn
       },
     }),
     /unsupported shape signal/,
+  );
+});
+
+test("check fails when populated dashboard outputs cannot render into the dashboard document", async () => {
+  const outputDir = await makeTempDir("invalid-output");
+  const indexPath = join(await makeTempDir("dashboard"), "index.html");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 100,
+        ksiCount: 20,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    join(outputDir, "patterns.json"),
+    JSON.stringify(
+      [
+        {
+          label: "pedestrian_location = 1 + pedestrian_movement = 3",
+          conditions: [
+            { field: "pedestrian_location", value: "1" },
+            { field: "pedestrian_movement", value: "3" },
+          ],
+          casualtyCount: 100,
+          ksiCount: 20,
+          ksiRate: 0.2,
+          evidenceLabel: "stable",
+        },
+      ],
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 10,
+        otherPassengerCar: 70,
+        unknownOrUnclassified: 20,
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    indexPath,
+    [
+      "<!DOCTYPE html>",
+      "<main>",
+      "  <strong data-field=\"dataPeriod\">Not built yet</strong>",
+      "  <strong data-field=\"casualtyCount\">-</strong>",
+      "  <strong data-field=\"ksiCount\">-</strong>",
+      "</main>",
+    ].join("\n"),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+        DASHBOARD_INDEX_PATH: indexPath,
+      },
+    }),
+    /dashboard render/i,
+  );
+});
+
+test("check fails when populated Vehicle Shape Signals do not have enough dashboard value slots", async () => {
+  const outputDir = await makeTempDir("invalid-output");
+  const indexPath = join(await makeTempDir("dashboard"), "index.html");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 100,
+        ksiCount: 20,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    join(outputDir, "patterns.json"),
+    JSON.stringify(
+      [
+        {
+          label: "pedestrian_location = 1 + pedestrian_movement = 3",
+          conditions: [
+            { field: "pedestrian_location", value: "1" },
+            { field: "pedestrian_movement", value: "3" },
+          ],
+          casualtyCount: 100,
+          ksiCount: 20,
+          ksiRate: 0.2,
+          evidenceLabel: "stable",
+        },
+      ],
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 10,
+        otherPassengerCar: 70,
+        unknownOrUnclassified: 20,
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    indexPath,
+    [
+      "<!DOCTYPE html>",
+      "<main>",
+      "  <strong data-field=\"dataPeriod\">Not built yet</strong>",
+      "  <strong data-field=\"casualtyCount\">-</strong>",
+      "  <strong data-field=\"ksiCount\">-</strong>",
+      "  <span data-field=\"patternStatus\">Awaiting data build</span>",
+      "  <tbody id=\"patterns-body\"></tbody>",
+      "  <div id=\"shape-grid\">",
+      "    <article><span>SUV/crossover</span><strong>-</strong></article>",
+      "    <article><span>Other passenger car</span><strong>-</strong></article>",
+      "    <article><span>Unknown or unclassified</span></article>",
+      "  </div>",
+      "</main>",
+    ].join("\n"),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+        DASHBOARD_INDEX_PATH: indexPath,
+      },
+    }),
+    /shape signal value slots/i,
+  );
+});
+
+test("check fails when a Danger Pattern KSI rate does not match its counts", async () => {
+  const outputDir = await makeTempDir("invalid-output");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 100,
+        ksiCount: 20,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    join(outputDir, "patterns.json"),
+    JSON.stringify(
+      [
+        {
+          label: "pedestrian_location = 1 + pedestrian_movement = 3",
+          conditions: [
+            { field: "pedestrian_location", value: "1" },
+            { field: "pedestrian_movement", value: "3" },
+          ],
+          casualtyCount: 100,
+          ksiCount: 20,
+          ksiRate: 0.1,
+          evidenceLabel: "stable",
+        },
+      ],
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 10,
+        otherPassengerCar: 70,
+        unknownOrUnclassified: 20,
+      },
+      null,
+      2,
+    ),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+      },
+    }),
+    /ksiRate/,
+  );
+});
+
+test("check fails when metadata KSI count exceeds casualty count", async () => {
+  const outputDir = await makeTempDir("invalid-output");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 10,
+        ksiCount: 11,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(join(outputDir, "patterns.json"), "[]\n");
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 1,
+        otherPassengerCar: 7,
+        unknownOrUnclassified: 2,
+      },
+      null,
+      2,
+    ),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+      },
+    }),
+    /metadata.ksiCount/,
   );
 });
