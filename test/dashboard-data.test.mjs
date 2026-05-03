@@ -108,6 +108,7 @@ test("GitHub Pages workflow verifies and publishes the static dashboard artifact
   assert.match(workflow, /cp -R app outputs dist\//);
   assert.match(workflow, /actions\/upload-pages-artifact@v3/);
   assert.match(workflow, /actions\/deploy-pages@v4/);
+  assert.match(workflow, /workflow_dispatch/);
   assert.match(workflow, /github\.event_name == 'push' && github\.ref == 'refs\/heads\/main'/);
 });
 
