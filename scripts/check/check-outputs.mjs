@@ -7,26 +7,49 @@ const outputDir =
 const indexPath =
   process.env.DASHBOARD_INDEX_PATH ??
   fileURLToPath(new URL("../../index.html", import.meta.url));
+const taxonomyPath =
+  process.env.MODEL_SHAPE_TAXONOMY_PATH ??
+  fileURLToPath(new URL("../../data/taxonomies/model_shape_v1.csv", import.meta.url));
 const outputDirUrl = pathToFileURL(`${outputDir}/`);
+const taxonomyUrl = pathToFileURL(taxonomyPath);
 const requiredFiles = [
-  "data/taxonomies/model_shape_v1.csv",
+  taxonomyPath,
 ];
 
 for (const file of requiredFiles) {
-  await readFile(new URL(`../../${file}`, import.meta.url), "utf8");
+  await readFile(file, "utf8");
 }
 
 const dashboardHtml = await readFile(indexPath, "utf8");
+const taxonomyRows = parseCsv(await readFile(taxonomyUrl, "utf8"));
 
 const dashboardFiles = ["metadata.json", "patterns.json", "shape-signals.json"];
 const inferredPatternFields = new Set(["generic_make_model", "shape_class"]);
-const shapeSignalFields = [
+const shapeSignalCountFields = [
   "suvCrossover",
   "otherPassengerCar",
   "unknownOrUnclassified",
   "notPassengerCar",
 ];
+const shapeSignalFields = [
+  ...shapeSignalCountFields,
+  "taxonomyCoverage",
+];
 const maxDashboardPatterns = 50;
+const signalStrengthBands = new Set(["red", "amber", "green"]);
+
+function parseCsv(text) {
+  const rows = text.trim().split(/\r?\n/);
+  if (rows.length < 2) {
+    return [];
+  }
+
+  const headers = rows[0].replace(/^\uFEFF/, "").split(",");
+  return rows.slice(1).map((row) => {
+    const values = row.split(",");
+    return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? ""]));
+  });
+}
 
 for (const file of dashboardFiles) {
   await readFile(new URL(file, outputDirUrl), "utf8");
@@ -117,13 +140,74 @@ for (const [index, pattern] of patterns.entries()) {
   }
 }
 
-for (const field of shapeSignalFields) {
+for (const field of shapeSignalCountFields) {
   assertCountField(shapeSignals[field], field);
 }
 
 for (const field of Object.keys(shapeSignals)) {
   if (!shapeSignalFields.includes(field)) {
     throw new Error(`unsupported shape signal field: ${field}`);
+  }
+}
+
+function expectedSignalStrengthBand(percentage) {
+  if (percentage >= 0.8) {
+    return "green";
+  }
+  if (percentage >= 0.5) {
+    return "amber";
+  }
+  return "red";
+}
+
+if (shapeSignals.taxonomyCoverage !== undefined) {
+  const coverage = shapeSignals.taxonomyCoverage;
+  if (typeof coverage !== "object" || coverage === null || Array.isArray(coverage)) {
+    throw new Error("shapeSignals.taxonomyCoverage must be an object");
+  }
+  assertCountField(coverage.coveredCount, "taxonomyCoverage.coveredCount");
+  assertCountField(coverage.denominatorCount, "taxonomyCoverage.denominatorCount");
+  if (
+    coverage.percentage !== null &&
+    (!Number.isFinite(coverage.percentage) ||
+      coverage.percentage < 0 ||
+      coverage.percentage > 1)
+  ) {
+    throw new Error("taxonomyCoverage.percentage must be between 0 and 1 or null");
+  }
+  if (
+    coverage.signalStrengthBand !== null &&
+    !signalStrengthBands.has(coverage.signalStrengthBand)
+  ) {
+    throw new Error("taxonomyCoverage.signalStrengthBand must be red, amber, green, or null");
+  }
+  if (
+    coverage.coveredCount !== null &&
+    coverage.denominatorCount !== null &&
+    coverage.percentage !== null
+  ) {
+    if (coverage.coveredCount > coverage.denominatorCount) {
+      throw new Error("taxonomyCoverage.coveredCount must not exceed denominatorCount");
+    }
+    const expectedPercentage =
+      coverage.denominatorCount === 0 ? 0 : coverage.coveredCount / coverage.denominatorCount;
+    if (Math.abs(coverage.percentage - expectedPercentage) > Number.EPSILON) {
+      throw new Error("taxonomyCoverage.percentage must equal coveredCount / denominatorCount");
+    }
+    if (coverage.signalStrengthBand !== expectedSignalStrengthBand(coverage.percentage)) {
+      throw new Error("taxonomyCoverage.signalStrengthBand contradicts coverage percentage");
+    }
+  }
+}
+
+for (const row of taxonomyRows) {
+  if (row.review_status !== "reviewed") {
+    continue;
+  }
+  if (row.confidence !== "high" || !row.source_url?.trim()) {
+    throw new Error(
+      `reviewed taxonomy row ${row.generic_make_model || "(unknown model)"} must have high confidence and a source URL`,
+    );
   }
 }
 
@@ -146,7 +230,7 @@ assertDashboardHook(/Not passenger car/, "missing not passenger car shape label"
 
 const shapeGridMatch = dashboardHtml.match(/<[^>]+id=["']shape-grid["'][\s\S]*?<\/div>/);
 const shapeValueSlotCount = shapeGridMatch?.[0].match(/<strong\b/g)?.length ?? 0;
-if (shapeValueSlotCount < shapeSignalFields.length) {
+if (shapeValueSlotCount < shapeSignalCountFields.length) {
   throw new Error("dashboard render smoke failed: missing shape signal value slots");
 }
 

@@ -2,5 +2,11 @@
   "suvCrossover": 0,
   "otherPassengerCar": 0,
   "unknownOrUnclassified": 69102,
-  "notPassengerCar": 20068
+  "notPassengerCar": 20068,
+  "taxonomyCoverage": {
+    "coveredCount": 0,
+    "denominatorCount": 69102,
+    "percentage": 0,
+    "signalStrengthBand": "red"
+  }
 }

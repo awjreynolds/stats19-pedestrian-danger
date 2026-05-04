@@ -234,8 +234,17 @@ function buildPatterns(rows) {
 function buildReviewedShapeLookup(taxonomyRows) {
   return new Map(
     taxonomyRows
-      .filter((row) => row.review_status === "reviewed")
+      .filter(isClassifiableTaxonomyRow)
       .map((row) => [row.generic_make_model, row.shape_class]),
+  );
+}
+
+function isClassifiableTaxonomyRow(row) {
+  return (
+    row.review_status === "reviewed" &&
+    row.confidence === "high" &&
+    typeof row.source_url === "string" &&
+    row.source_url.trim() !== ""
   );
 }
 
@@ -252,6 +261,28 @@ function isPassengerCarEligible(row) {
   return vehicleType === 8 || vehicleType === 9;
 }
 
+function isPresentModelFamily(value) {
+  if (typeof value !== "string" || value.trim() === "") {
+    return false;
+  }
+  return !new Set([
+    "data missing or out of range",
+    "not reported",
+    "unreported",
+    "redacted",
+  ]).has(value.trim().toLowerCase());
+}
+
+function getSignalStrengthBand(percentage) {
+  if (percentage >= 0.8) {
+    return "green";
+  }
+  if (percentage >= 0.5) {
+    return "amber";
+  }
+  return "red";
+}
+
 function buildShapeSignals(rows, vehicleRows, taxonomyRows) {
   const pedestrianRows = getPedestrianRowsForLatestYears(rows, getLatestYears(rows));
   if (!pedestrianRows.length) {
@@ -260,6 +291,12 @@ function buildShapeSignals(rows, vehicleRows, taxonomyRows) {
       otherPassengerCar: null,
       unknownOrUnclassified: null,
       notPassengerCar: null,
+      taxonomyCoverage: {
+        coveredCount: null,
+        denominatorCount: null,
+        percentage: null,
+        signalStrengthBand: null,
+      },
     };
   }
 
@@ -272,6 +309,12 @@ function buildShapeSignals(rows, vehicleRows, taxonomyRows) {
     unknownOrUnclassified: 0,
     notPassengerCar: 0,
   };
+  const taxonomyCoverage = {
+    coveredCount: 0,
+    denominatorCount: 0,
+    percentage: 0,
+    signalStrengthBand: "red",
+  };
 
   for (const row of pedestrianRows) {
     const associatedVehicle = hasVehicleData
@@ -282,17 +325,33 @@ function buildShapeSignals(rows, vehicleRows, taxonomyRows) {
       continue;
     }
 
-    const shapeClass = reviewedShapeLookup.get(associatedVehicle?.generic_make_model);
+    const modelFamily = associatedVehicle?.generic_make_model;
+    const shapeClass = reviewedShapeLookup.get(modelFamily);
+    if (associatedVehicle && (!hasVehicleData || isPassengerCarEligible(associatedVehicle)) && isPresentModelFamily(modelFamily)) {
+      taxonomyCoverage.denominatorCount += 1;
+      if (shapeClass) {
+        taxonomyCoverage.coveredCount += 1;
+      }
+    }
     if (shapeClass === "suv_crossover") {
       shapeSignals.suvCrossover += 1;
     } else if (shapeClass === "other_passenger_car") {
       shapeSignals.otherPassengerCar += 1;
-    } else {
+    } else if (!hasVehicleData || !associatedVehicle || isPresentModelFamily(modelFamily)) {
       shapeSignals.unknownOrUnclassified += 1;
     }
   }
 
-  return shapeSignals;
+  taxonomyCoverage.percentage =
+    taxonomyCoverage.denominatorCount === 0
+      ? 0
+      : taxonomyCoverage.coveredCount / taxonomyCoverage.denominatorCount;
+  taxonomyCoverage.signalStrengthBand = getSignalStrengthBand(taxonomyCoverage.percentage);
+
+  return {
+    ...shapeSignals,
+    taxonomyCoverage,
+  };
 }
 
 const casualtyRows = await readCasualtyRows();

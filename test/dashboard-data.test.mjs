@@ -16,9 +16,20 @@ async function makeTempDir(name) {
 
 function makeDashboardDocument() {
   const fields = Object.fromEntries(
-    ["dataPeriod", "casualtyCount", "ksiCount", "patternStatus"].map((field) => [
+    [
+      "dataPeriod",
+      "casualtyCount",
+      "ksiCount",
+      "patternStatus",
+      "taxonomyCoverage",
+      "signalStrengthBand",
+    ].map((field) => [
       field,
-      { dataset: { field }, textContent: "" },
+      {
+        className: "",
+        dataset: { field },
+        textContent: "",
+      },
     ]),
   );
   const shapeCells = [
@@ -60,6 +71,24 @@ function makeDashboardDocument() {
       }
       throw new Error(`Unexpected selector: ${selector}`);
     },
+  };
+}
+
+function taxonomyCoverage(coveredCount, denominatorCount) {
+  const percentage = denominatorCount === 0 ? 0 : coveredCount / denominatorCount;
+  const signalStrengthBand = percentage >= 0.8 ? "green" : percentage >= 0.5 ? "amber" : "red";
+  return {
+    coveredCount,
+    denominatorCount,
+    percentage,
+    signalStrengthBand,
+  };
+}
+
+function shapeSignalsOutput(counts, coverage = taxonomyCoverage(0, 0)) {
+  return {
+    ...counts,
+    taxonomyCoverage: coverage,
   };
 }
 
@@ -184,6 +213,7 @@ test("dashboard renderer smoke-renders populated metadata, patterns, and shape s
       otherPassengerCar: 70,
       unknownOrUnclassified: 20,
       notPassengerCar: 5,
+      taxonomyCoverage: taxonomyCoverage(80, 100),
     },
   });
 
@@ -198,6 +228,9 @@ test("dashboard renderer smoke-renders populated metadata, patterns, and shape s
     document.shapeCells.map((cell) => cell.textContent),
     ["10", "70", "20", "5"],
   );
+  assert.equal(document.fields.taxonomyCoverage.textContent, "80%");
+  assert.equal(document.fields.signalStrengthBand.textContent, "Green signal strength");
+  assert.equal(document.fields.signalStrengthBand.className, "signal-band signal-band--green");
 });
 
 test("dashboard renderer smoke-renders empty dashboard outputs", async () => {
@@ -216,6 +249,12 @@ test("dashboard renderer smoke-renders empty dashboard outputs", async () => {
       otherPassengerCar: null,
       unknownOrUnclassified: null,
       notPassengerCar: null,
+      taxonomyCoverage: {
+        coveredCount: null,
+        denominatorCount: null,
+        percentage: null,
+        signalStrengthBand: null,
+      },
     },
   });
 
@@ -227,6 +266,34 @@ test("dashboard renderer smoke-renders empty dashboard outputs", async () => {
     document.shapeCells.map((cell) => cell.textContent),
     ["-", "-", "-", "-"],
   );
+  assert.equal(document.fields.taxonomyCoverage.textContent, "-");
+  assert.equal(document.fields.signalStrengthBand.textContent, "Signal strength unavailable");
+  assert.equal(document.fields.signalStrengthBand.className, "signal-band");
+});
+
+test("dashboard renderer displays amber Signal Strength Band with exact Taxonomy Coverage", async () => {
+  const { renderDashboard } = await import("../app/src/main.js");
+  const document = makeDashboardDocument();
+
+  renderDashboard(document, {
+    metadata: {
+      dataPeriod: "2019-2023",
+      casualtyCount: 10,
+      ksiCount: 2,
+    },
+    patterns: [],
+    shapeSignals: {
+      suvCrossover: 1,
+      otherPassengerCar: 6,
+      unknownOrUnclassified: 3,
+      notPassengerCar: 0,
+      taxonomyCoverage: taxonomyCoverage(7, 10),
+    },
+  });
+
+  assert.equal(document.fields.taxonomyCoverage.textContent, "70%");
+  assert.equal(document.fields.signalStrengthBand.textContent, "Amber signal strength");
+  assert.equal(document.fields.signalStrengthBand.className, "signal-band signal-band--amber");
 });
 
 test("check fails when dashboard metadata fields have invalid types", async () => {
@@ -289,12 +356,15 @@ test("build:data keeps pattern output placeholder-compatible and writes shape co
   });
 
   assert.deepEqual(JSON.parse(await readFile(join(outputDir, "patterns.json"), "utf8")), []);
-  assert.deepEqual(JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8")), {
-    suvCrossover: 0,
-    otherPassengerCar: 0,
-    unknownOrUnclassified: 1,
-    notPassengerCar: 0,
-  });
+  assert.deepEqual(
+    JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8")),
+    shapeSignalsOutput({
+      suvCrossover: 0,
+      otherPassengerCar: 0,
+      unknownOrUnclassified: 1,
+      notPassengerCar: 0,
+    }),
+  );
 });
 
 test("build:data ignores non-casualty raw CSVs when choosing the latest five casualty years", async () => {
@@ -607,8 +677,8 @@ test("build:data writes Vehicle Shape Signals from reviewed taxonomy rows", asyn
     taxonomyPath,
     [
       "generic_make_model,shape_class,confidence,review_status,notes,source_url",
-      "MODEL SUV,suv_crossover,high,reviewed,,",
-      "MODEL HATCH,other_passenger_car,high,reviewed,,",
+      "MODEL SUV,suv_crossover,high,reviewed,,https://example.com/model-suv",
+      "MODEL HATCH,other_passenger_car,high,reviewed,,https://example.com/model-hatch",
       "UNREVIEWED SUV,suv_crossover,low,unreviewed,,",
     ].join("\n"),
   );
@@ -624,12 +694,87 @@ test("build:data writes Vehicle Shape Signals from reviewed taxonomy rows", asyn
 
   const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
 
-  assert.deepEqual(shapeSignals, {
-    suvCrossover: 2,
-    otherPassengerCar: 1,
-    unknownOrUnclassified: 3,
-    notPassengerCar: 0,
+  assert.deepEqual(
+    shapeSignals,
+    shapeSignalsOutput(
+      {
+        suvCrossover: 2,
+        otherPassengerCar: 1,
+        unknownOrUnclassified: 3,
+        notPassengerCar: 0,
+      },
+      taxonomyCoverage(3, 5),
+    ),
+  );
+});
+
+test("build:data writes Taxonomy Coverage over eligible present model families using only classifiable taxonomy rows", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+  const taxonomyPath = join(await makeTempDir("taxonomy"), "model_shape_v1.csv");
+
+  await writeFile(
+    join(rawDir, "casualty.csv"),
+    [
+      "collision_index,collision_year,vehicle_reference,casualty_class,casualty_severity",
+      "C1,2024,1,3,3",
+      "C1,2024,2,3,3",
+      "C1,2024,3,3,3",
+      "C1,2024,4,3,3",
+      "C1,2024,5,3,3",
+      "C1,2024,6,3,3",
+      "C1,2024,7,3,3",
+      "C1,2024,8,3,3",
+    ].join("\n"),
+  );
+  await writeFile(
+    join(rawDir, "vehicle.csv"),
+    [
+      "collision_index,collision_year,vehicle_reference,vehicle_type,generic_make_model",
+      "C1,2024,1,9,MODEL SUV",
+      "C1,2024,2,9,MODEL LOW CONFIDENCE",
+      "C1,2024,3,9,MODEL NO SOURCE",
+      "C1,2024,4,9,MODEL UNKNOWN",
+      "C1,2024,5,9,",
+      "C1,2024,6,9,Data missing or out of range",
+      "C1,2024,7,9,Not reported",
+      "C1,2024,8,11,MODEL BUS",
+    ].join("\n"),
+  );
+  await writeFile(
+    taxonomyPath,
+    [
+      "generic_make_model,shape_class,confidence,review_status,notes,source_url",
+      "MODEL SUV,suv_crossover,high,reviewed,,https://example.com/model-suv",
+      "MODEL LOW CONFIDENCE,suv_crossover,low,reviewed,,https://example.com/model-low",
+      "MODEL NO SOURCE,suv_crossover,high,reviewed,,",
+      "MODEL BUS,suv_crossover,high,reviewed,,https://example.com/model-bus",
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+      MODEL_SHAPE_TAXONOMY_PATH: taxonomyPath,
+    },
   });
+
+  const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
+
+  assert.deepEqual(
+    shapeSignals,
+    shapeSignalsOutput(
+      {
+        suvCrossover: 1,
+        otherPassengerCar: 0,
+        unknownOrUnclassified: 3,
+        notPassengerCar: 1,
+      },
+      taxonomyCoverage(1, 4),
+    ),
+  );
 });
 
 test("build:data joins current DfT casualty rows to their Associated Vehicle before classifying shape", async () => {
@@ -658,10 +803,10 @@ test("build:data joins current DfT casualty rows to their Associated Vehicle bef
     taxonomyPath,
     [
       "generic_make_model,shape_class,confidence,review_status,notes,source_url",
-      "CASUALTY MODEL SHOULD NOT CLASSIFY,suv_crossover,high,reviewed,,",
-      "MODEL SUV,suv_crossover,high,reviewed,,",
-      "MODEL HATCH,other_passenger_car,high,reviewed,,",
-      "MODEL UNASSOCIATED SUV,suv_crossover,high,reviewed,,",
+      "CASUALTY MODEL SHOULD NOT CLASSIFY,suv_crossover,high,reviewed,,https://example.com/casualty-model",
+      "MODEL SUV,suv_crossover,high,reviewed,,https://example.com/model-suv",
+      "MODEL HATCH,other_passenger_car,high,reviewed,,https://example.com/model-hatch",
+      "MODEL UNASSOCIATED SUV,suv_crossover,high,reviewed,,https://example.com/unassociated",
     ].join("\n"),
   );
 
@@ -676,12 +821,18 @@ test("build:data joins current DfT casualty rows to their Associated Vehicle bef
 
   const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
 
-  assert.deepEqual(shapeSignals, {
-    suvCrossover: 1,
-    otherPassengerCar: 1,
-    unknownOrUnclassified: 0,
-    notPassengerCar: 0,
-  });
+  assert.deepEqual(
+    shapeSignals,
+    shapeSignalsOutput(
+      {
+        suvCrossover: 1,
+        otherPassengerCar: 1,
+        unknownOrUnclassified: 0,
+        notPassengerCar: 0,
+      },
+      taxonomyCoverage(2, 2),
+    ),
+  );
 });
 
 test("build:data keeps unmatched Associated Vehicle joins in unknown or unclassified", async () => {
@@ -707,8 +858,8 @@ test("build:data keeps unmatched Associated Vehicle joins in unknown or unclassi
     taxonomyPath,
     [
       "generic_make_model,shape_class,confidence,review_status,notes,source_url",
-      "CASUALTY MODEL SHOULD NOT CLASSIFY,suv_crossover,high,reviewed,,",
-      "MODEL SUV,suv_crossover,high,reviewed,,",
+      "CASUALTY MODEL SHOULD NOT CLASSIFY,suv_crossover,high,reviewed,,https://example.com/casualty-model",
+      "MODEL SUV,suv_crossover,high,reviewed,,https://example.com/model-suv",
     ].join("\n"),
   );
 
@@ -723,12 +874,15 @@ test("build:data keeps unmatched Associated Vehicle joins in unknown or unclassi
 
   const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
 
-  assert.deepEqual(shapeSignals, {
-    suvCrossover: 0,
-    otherPassengerCar: 0,
-    unknownOrUnclassified: 1,
-    notPassengerCar: 0,
-  });
+  assert.deepEqual(
+    shapeSignals,
+    shapeSignalsOutput({
+      suvCrossover: 0,
+      otherPassengerCar: 0,
+      unknownOrUnclassified: 1,
+      notPassengerCar: 0,
+    }),
+  );
 });
 
 test("build:data emits non-passenger-car Associated Vehicles separately", async () => {
@@ -756,8 +910,8 @@ test("build:data emits non-passenger-car Associated Vehicles separately", async 
     taxonomyPath,
     [
       "generic_make_model,shape_class,confidence,review_status,notes,source_url",
-      "MODEL BUS,suv_crossover,high,reviewed,,",
-      "MODEL SUV,suv_crossover,high,reviewed,,",
+      "MODEL BUS,suv_crossover,high,reviewed,,https://example.com/model-bus",
+      "MODEL SUV,suv_crossover,high,reviewed,,https://example.com/model-suv",
     ].join("\n"),
   );
 
@@ -772,12 +926,18 @@ test("build:data emits non-passenger-car Associated Vehicles separately", async 
 
   const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
 
-  assert.deepEqual(shapeSignals, {
-    suvCrossover: 1,
-    otherPassengerCar: 0,
-    unknownOrUnclassified: 0,
-    notPassengerCar: 1,
-  });
+  assert.deepEqual(
+    shapeSignals,
+    shapeSignalsOutput(
+      {
+        suvCrossover: 1,
+        otherPassengerCar: 0,
+        unknownOrUnclassified: 0,
+        notPassengerCar: 1,
+      },
+      taxonomyCoverage(1, 1),
+    ),
+  );
 });
 
 test("build:data joins legacy accident fixture rows with vehicle_ref", async () => {
@@ -803,8 +963,8 @@ test("build:data joins legacy accident fixture rows with vehicle_ref", async () 
     taxonomyPath,
     [
       "generic_make_model,shape_class,confidence,review_status,notes,source_url",
-      "CASUALTY MODEL SHOULD NOT CLASSIFY,suv_crossover,high,reviewed,,",
-      "MODEL HATCH,other_passenger_car,high,reviewed,,",
+      "CASUALTY MODEL SHOULD NOT CLASSIFY,suv_crossover,high,reviewed,,https://example.com/casualty-model",
+      "MODEL HATCH,other_passenger_car,high,reviewed,,https://example.com/model-hatch",
     ].join("\n"),
   );
 
@@ -819,12 +979,18 @@ test("build:data joins legacy accident fixture rows with vehicle_ref", async () 
 
   const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
 
-  assert.deepEqual(shapeSignals, {
-    suvCrossover: 0,
-    otherPassengerCar: 1,
-    unknownOrUnclassified: 0,
-    notPassengerCar: 0,
-  });
+  assert.deepEqual(
+    shapeSignals,
+    shapeSignalsOutput(
+      {
+        suvCrossover: 0,
+        otherPassengerCar: 1,
+        unknownOrUnclassified: 0,
+        notPassengerCar: 0,
+      },
+      taxonomyCoverage(1, 1),
+    ),
+  );
 });
 
 test("build:data does not classify excluded taxonomy rows", async () => {
@@ -858,12 +1024,18 @@ test("build:data does not classify excluded taxonomy rows", async () => {
 
   const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
 
-  assert.deepEqual(shapeSignals, {
-    suvCrossover: 0,
-    otherPassengerCar: 0,
-    unknownOrUnclassified: 1,
-    notPassengerCar: 0,
-  });
+  assert.deepEqual(
+    shapeSignals,
+    shapeSignalsOutput(
+      {
+        suvCrossover: 0,
+        otherPassengerCar: 0,
+        unknownOrUnclassified: 1,
+        notPassengerCar: 0,
+      },
+      taxonomyCoverage(0, 1),
+    ),
+  );
 });
 
 test("check fails when Vehicle Shape Signals are missing a required count", async () => {
@@ -936,7 +1108,7 @@ test("build:data keeps Vehicle Shape Signals out of Danger Pattern conditions", 
     taxonomyPath,
     [
       "generic_make_model,shape_class,confidence,review_status,notes,source_url",
-      "MODEL SUV,suv_crossover,high,reviewed,,",
+      "MODEL SUV,suv_crossover,high,reviewed,,https://example.com/model-suv",
     ].join("\n"),
   );
 
@@ -952,12 +1124,18 @@ test("build:data keeps Vehicle Shape Signals out of Danger Pattern conditions", 
   const patterns = JSON.parse(await readFile(join(outputDir, "patterns.json"), "utf8"));
   const shapeSignals = JSON.parse(await readFile(join(outputDir, "shape-signals.json"), "utf8"));
 
-  assert.deepEqual(shapeSignals, {
-    suvCrossover: 100,
-    otherPassengerCar: 0,
-    unknownOrUnclassified: 0,
-    notPassengerCar: 0,
-  });
+  assert.deepEqual(
+    shapeSignals,
+    shapeSignalsOutput(
+      {
+        suvCrossover: 100,
+        otherPassengerCar: 0,
+        unknownOrUnclassified: 0,
+        notPassengerCar: 0,
+      },
+      taxonomyCoverage(100, 100),
+    ),
+  );
   assert(patterns.length > 0);
   assert(
     patterns.every((pattern) =>
@@ -1046,6 +1224,100 @@ test("check accepts Not Passenger Car as a Vehicle Shape Signal count", async ()
       DASHBOARD_OUTPUT_DIR: outputDir,
     },
   });
+});
+
+test("check accepts Taxonomy Coverage and Signal Strength Band in Vehicle Shape Signals", async () => {
+  const outputDir = await makeTempDir("output");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 10,
+        ksiCount: 2,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(join(outputDir, "patterns.json"), "[]\n");
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      shapeSignalsOutput(
+        {
+          suvCrossover: 1,
+          otherPassengerCar: 6,
+          unknownOrUnclassified: 3,
+          notPassengerCar: 0,
+        },
+        taxonomyCoverage(7, 10),
+      ),
+      null,
+      2,
+    ),
+  );
+
+  await execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+    env: {
+      ...process.env,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+    },
+  });
+});
+
+test("check fails when reviewed taxonomy rows are missing high confidence or source URLs", async () => {
+  const outputDir = await makeTempDir("invalid-output");
+  const taxonomyPath = join(await makeTempDir("taxonomy"), "model_shape_v1.csv");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 1,
+        ksiCount: 0,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(join(outputDir, "patterns.json"), "[]\n");
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 0,
+        otherPassengerCar: 0,
+        unknownOrUnclassified: 0,
+        notPassengerCar: 1,
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    taxonomyPath,
+    [
+      "generic_make_model,shape_class,confidence,review_status,notes,source_url",
+      "MODEL NO SOURCE,suv_crossover,high,reviewed,,",
+      "MODEL LOW CONFIDENCE,other_passenger_car,low,reviewed,,https://example.com/model-low",
+    ].join("\n"),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+        MODEL_SHAPE_TAXONOMY_PATH: taxonomyPath,
+      },
+    }),
+    /reviewed taxonomy row/i,
+  );
 });
 
 test("check fails when populated dashboard outputs cannot render into the dashboard document", async () => {
