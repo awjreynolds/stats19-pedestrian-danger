@@ -20,7 +20,12 @@ const dashboardHtml = await readFile(indexPath, "utf8");
 
 const dashboardFiles = ["metadata.json", "patterns.json", "shape-signals.json"];
 const inferredPatternFields = new Set(["generic_make_model", "shape_class"]);
-const shapeSignalFields = ["suvCrossover", "otherPassengerCar", "unknownOrUnclassified"];
+const shapeSignalFields = [
+  "suvCrossover",
+  "otherPassengerCar",
+  "unknownOrUnclassified",
+  "notPassengerCar",
+];
 const maxDashboardPatterns = 50;
 
 for (const file of dashboardFiles) {
@@ -137,6 +142,7 @@ assertDashboardHook(/id=["']shape-grid["']/, "missing shape grid");
 assertDashboardHook(/SUV\/crossover/, "missing SUV/crossover shape label");
 assertDashboardHook(/Other passenger car/, "missing other passenger car shape label");
 assertDashboardHook(/Unknown or unclassified/, "missing unknown shape label");
+assertDashboardHook(/Not passenger car/, "missing not passenger car shape label");
 
 const shapeGridMatch = dashboardHtml.match(/<[^>]+id=["']shape-grid["'][\s\S]*?<\/div>/);
 const shapeValueSlotCount = shapeGridMatch?.[0].match(/<strong\b/g)?.length ?? 0;

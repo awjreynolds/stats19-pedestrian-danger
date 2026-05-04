@@ -9,6 +9,7 @@ const rawDir =
   fileURLToPath(new URL("../../data/raw/", import.meta.url));
 const latestValidatedYears = [2020, 2021, 2022, 2023, 2024];
 const baseUrl = "https://data.dft.gov.uk/road-accidents-safety-data/";
+const datasets = ["casualty", "vehicle"];
 
 await mkdir(rawDir, { recursive: true });
 
@@ -21,12 +22,14 @@ async function download(url, destination) {
 }
 
 for (const year of latestValidatedYears) {
-  const filename = `dft-road-casualty-statistics-casualty-${year}.csv`;
-  const url = `${baseUrl}${filename}`;
-  const destination = join(rawDir, basename(filename));
+  for (const dataset of datasets) {
+    const filename = `dft-road-casualty-statistics-${dataset}-${year}.csv`;
+    const url = `${baseUrl}${filename}`;
+    const destination = join(rawDir, basename(filename));
 
-  console.log(`Downloading ${filename}`);
-  await download(url, destination);
+    console.log(`Downloading ${filename}`);
+    await download(url, destination);
+  }
 }
 
-console.log(`Downloaded ${latestValidatedYears.length} STATS19 casualty files.`);
+console.log(`Downloaded ${latestValidatedYears.length * datasets.length} STATS19 files.`);

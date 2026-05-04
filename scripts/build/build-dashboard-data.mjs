@@ -56,7 +56,16 @@ function hasCasualtyColumns(rows) {
   );
 }
 
-async function readCasualtyRows() {
+function hasVehicleColumns(rows) {
+  return rows.some(
+    (row) =>
+      getYear(row) !== null &&
+      Object.hasOwn(row, "vehicle_type") &&
+      getVehicleReference(row) !== null,
+  );
+}
+
+async function readRawRows(filterRows) {
   let files;
   try {
     files = await readdir(rawDir);
@@ -71,10 +80,18 @@ async function readCasualtyRows() {
   const rowSets = await Promise.all(
     csvFiles.map(async (file) => {
       const rows = parseCsv(await readFile(new URL(file, rawDirUrl), "utf8"));
-      return hasCasualtyColumns(rows) ? rows : [];
+      return filterRows(rows) ? rows : [];
     }),
   );
   return rowSets.flat();
+}
+
+async function readCasualtyRows() {
+  return readRawRows(hasCasualtyColumns);
+}
+
+async function readVehicleRows() {
+  return readRawRows(hasVehicleColumns);
 }
 
 async function readTaxonomyRows() {
@@ -98,6 +115,29 @@ function getLatestYears(rows) {
 function getYear(row) {
   const year = Number(row.accident_year ?? row.collision_year);
   return Number.isInteger(year) ? year : null;
+}
+
+function getCollisionIdentity(row) {
+  return (
+    row.collision_index ??
+    row.collision_ref_no ??
+    row.accident_index ??
+    row.accident_reference ??
+    null
+  );
+}
+
+function getVehicleReference(row) {
+  return row.vehicle_reference ?? row.vehicle_ref ?? null;
+}
+
+function getAssociatedVehicleKey(row) {
+  const collisionIdentity = getCollisionIdentity(row);
+  const vehicleReference = getVehicleReference(row);
+  if (collisionIdentity === null || vehicleReference === null) {
+    return null;
+  }
+  return `${collisionIdentity}\0${vehicleReference}`;
 }
 
 function getPedestrianRowsForLatestYears(rows, latestYears) {
@@ -199,25 +239,50 @@ function buildReviewedShapeLookup(taxonomyRows) {
   );
 }
 
-function buildShapeSignals(rows, taxonomyRows) {
+function buildAssociatedVehicleLookup(vehicleRows) {
+  return new Map(
+    vehicleRows
+      .map((row) => [getAssociatedVehicleKey(row), row])
+      .filter(([key]) => key !== null),
+  );
+}
+
+function isPassengerCarEligible(row) {
+  const vehicleType = Number(row.vehicle_type);
+  return vehicleType === 8 || vehicleType === 9;
+}
+
+function buildShapeSignals(rows, vehicleRows, taxonomyRows) {
   const pedestrianRows = getPedestrianRowsForLatestYears(rows, getLatestYears(rows));
   if (!pedestrianRows.length) {
     return {
       suvCrossover: null,
       otherPassengerCar: null,
       unknownOrUnclassified: null,
+      notPassengerCar: null,
     };
   }
 
   const reviewedShapeLookup = buildReviewedShapeLookup(taxonomyRows);
+  const associatedVehicleLookup = buildAssociatedVehicleLookup(vehicleRows);
+  const hasVehicleData = vehicleRows.length > 0;
   const shapeSignals = {
     suvCrossover: 0,
     otherPassengerCar: 0,
     unknownOrUnclassified: 0,
+    notPassengerCar: 0,
   };
 
   for (const row of pedestrianRows) {
-    const shapeClass = reviewedShapeLookup.get(row.generic_make_model);
+    const associatedVehicle = hasVehicleData
+      ? associatedVehicleLookup.get(getAssociatedVehicleKey(row))
+      : row;
+    if (associatedVehicle && hasVehicleData && !isPassengerCarEligible(associatedVehicle)) {
+      shapeSignals.notPassengerCar += 1;
+      continue;
+    }
+
+    const shapeClass = reviewedShapeLookup.get(associatedVehicle?.generic_make_model);
     if (shapeClass === "suv_crossover") {
       shapeSignals.suvCrossover += 1;
     } else if (shapeClass === "other_passenger_car") {
@@ -231,10 +296,11 @@ function buildShapeSignals(rows, taxonomyRows) {
 }
 
 const casualtyRows = await readCasualtyRows();
+const vehicleRows = await readVehicleRows();
 const taxonomyRows = await readTaxonomyRows();
 const metadata = buildMetadata(casualtyRows);
 const patterns = buildPatterns(casualtyRows);
-const shapeSignals = buildShapeSignals(casualtyRows, taxonomyRows);
+const shapeSignals = buildShapeSignals(casualtyRows, vehicleRows, taxonomyRows);
 
 await writeFile(
   new URL("metadata.json", outputDirUrl),
