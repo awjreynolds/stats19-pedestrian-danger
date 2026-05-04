@@ -68,12 +68,28 @@ function renderShapeSignals(documentRef, shapeSignals) {
   });
 }
 
+function renderTaxonomyCoverage(fields, shapeSignals) {
+  const coverage = shapeSignals.taxonomyCoverage;
+  if (!coverage || !Number.isFinite(coverage.percentage) || !coverage.signalStrengthBand) {
+    fields.taxonomyCoverage.textContent = "-";
+    fields.signalStrengthBand.textContent = "Signal strength unavailable";
+    fields.signalStrengthBand.className = "signal-band";
+    return;
+  }
+
+  const bandLabel = coverage.signalStrengthBand[0].toUpperCase() + coverage.signalStrengthBand.slice(1);
+  fields.taxonomyCoverage.textContent = percentFormatter.format(coverage.percentage);
+  fields.signalStrengthBand.textContent = `${bandLabel} signal strength`;
+  fields.signalStrengthBand.className = `signal-band signal-band--${coverage.signalStrengthBand}`;
+}
+
 export function renderDashboard(documentRef, { metadata, patterns, shapeSignals }) {
   const fields = getFields(documentRef);
 
   renderMetadata(fields, metadata);
   renderPatterns(documentRef, fields, patterns);
   renderShapeSignals(documentRef, shapeSignals);
+  renderTaxonomyCoverage(fields, shapeSignals);
 }
 
 async function main() {
