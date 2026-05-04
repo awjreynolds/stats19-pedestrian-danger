@@ -61,6 +61,7 @@ function renderShapeSignals(documentRef, shapeSignals) {
     shapeSignals.suvCrossover,
     shapeSignals.otherPassengerCar,
     shapeSignals.unknownOrUnclassified,
+    shapeSignals.notPassengerCar,
   ];
   cells.forEach((cell, index) => {
     cell.textContent = formatCount(values[index]);
