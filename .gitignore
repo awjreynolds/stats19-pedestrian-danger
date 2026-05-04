@@ -3,8 +3,8 @@ data/raw/
 
 # Temporary analysis scratch space.
 .tmp/
+.worktrees/
 *.log
 
 # Dependency folders if the project later adds tooling.
 node_modules/
-
