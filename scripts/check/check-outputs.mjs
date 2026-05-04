@@ -4,6 +4,9 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const outputDir =
   process.env.DASHBOARD_OUTPUT_DIR ??
   fileURLToPath(new URL("../../outputs/dashboard/", import.meta.url));
+const taxonomyReviewOutputDir =
+  process.env.TAXONOMY_REVIEW_OUTPUT_DIR ??
+  fileURLToPath(new URL("../../outputs/taxonomy_review/", import.meta.url));
 const indexPath =
   process.env.DASHBOARD_INDEX_PATH ??
   fileURLToPath(new URL("../../index.html", import.meta.url));
@@ -12,6 +15,7 @@ const taxonomyPath =
   fileURLToPath(new URL("../../data/taxonomies/model_shape_v1.csv", import.meta.url));
 const outputDirUrl = pathToFileURL(`${outputDir}/`);
 const taxonomyUrl = pathToFileURL(taxonomyPath);
+const taxonomyReviewOutputDirUrl = pathToFileURL(`${taxonomyReviewOutputDir}/`);
 const requiredFiles = [
   taxonomyPath,
 ];
@@ -63,6 +67,9 @@ const patterns = JSON.parse(
 );
 const shapeSignals = JSON.parse(
   await readFile(new URL("shape-signals.json", outputDirUrl), "utf8"),
+);
+const taxonomyReviewQueue = JSON.parse(
+  await readFile(new URL("queue.json", taxonomyReviewOutputDirUrl), "utf8"),
 );
 
 function assertStringField(value, field) {
@@ -211,6 +218,38 @@ for (const row of taxonomyRows) {
   }
 }
 
+if (!Array.isArray(taxonomyReviewQueue)) {
+  throw new Error("taxonomy review queue must be an array");
+}
+
+let previousQueueRow = null;
+for (const [index, queueRow] of taxonomyReviewQueue.entries()) {
+  assertStringField(queueRow.modelFamily, `taxonomyReviewQueue[${index}].modelFamily`);
+  assertCountField(
+    queueRow.associatedPedestrianCasualtyCount,
+    `taxonomyReviewQueue[${index}].associatedPedestrianCasualtyCount`,
+  );
+  assertCountField(queueRow.ksiCount, `taxonomyReviewQueue[${index}].ksiCount`);
+  assertStringField(
+    queueRow.currentClassificationStatus,
+    `taxonomyReviewQueue[${index}].currentClassificationStatus`,
+  );
+  if (queueRow.ksiCount > queueRow.associatedPedestrianCasualtyCount) {
+    throw new Error("taxonomy review queue KSI count must not exceed casualty count");
+  }
+  if (
+    previousQueueRow &&
+    (previousQueueRow.associatedPedestrianCasualtyCount <
+      queueRow.associatedPedestrianCasualtyCount ||
+      (previousQueueRow.associatedPedestrianCasualtyCount ===
+        queueRow.associatedPedestrianCasualtyCount &&
+        previousQueueRow.modelFamily.localeCompare(queueRow.modelFamily) > 0))
+  ) {
+    throw new Error("taxonomy review queue must be sorted deterministically");
+  }
+  previousQueueRow = queueRow;
+}
+
 function assertDashboardHook(pattern, message) {
   if (!pattern.test(dashboardHtml)) {
     throw new Error(`dashboard render smoke failed: ${message}`);
@@ -234,4 +273,4 @@ if (shapeValueSlotCount < shapeSignalCountFields.length) {
   throw new Error("dashboard render smoke failed: missing shape signal value slots");
 }
 
-console.log(`Checked ${requiredFiles.length + dashboardFiles.length} required files.`);
+console.log(`Checked ${requiredFiles.length + dashboardFiles.length + 1} required files.`);

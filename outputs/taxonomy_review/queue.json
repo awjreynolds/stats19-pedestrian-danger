@@ -1,0 +1,3338 @@
+[
+  {
+    "modelFamily": "FORD FIESTA",
+    "associatedPedestrianCasualtyCount": 2216,
+    "ksiCount": 769,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD FOCUS",
+    "associatedPedestrianCasualtyCount": 1829,
+    "ksiCount": 632,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL CORSA",
+    "associatedPedestrianCasualtyCount": 1816,
+    "ksiCount": 599,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN GOLF",
+    "associatedPedestrianCasualtyCount": 1654,
+    "ksiCount": 599,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL ASTRA",
+    "associatedPedestrianCasualtyCount": 1638,
+    "ksiCount": 535,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA PRIUS",
+    "associatedPedestrianCasualtyCount": 1287,
+    "ksiCount": 310,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA YARIS",
+    "associatedPedestrianCasualtyCount": 1035,
+    "ksiCount": 309,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN QASHQAI",
+    "associatedPedestrianCasualtyCount": 1018,
+    "ksiCount": 306,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN POLO",
+    "associatedPedestrianCasualtyCount": 985,
+    "ksiCount": 349,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW 3 SERIES",
+    "associatedPedestrianCasualtyCount": 870,
+    "ksiCount": 290,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI A3",
+    "associatedPedestrianCasualtyCount": 728,
+    "ksiCount": 242,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW 1 SERIES",
+    "associatedPedestrianCasualtyCount": 725,
+    "ksiCount": 266,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES C CLASS",
+    "associatedPedestrianCasualtyCount": 705,
+    "ksiCount": 229,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL ZAFIRA",
+    "associatedPedestrianCasualtyCount": 661,
+    "ksiCount": 203,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA AURIS",
+    "associatedPedestrianCasualtyCount": 649,
+    "ksiCount": 165,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA JAZZ",
+    "associatedPedestrianCasualtyCount": 639,
+    "ksiCount": 203,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA CIVIC",
+    "associatedPedestrianCasualtyCount": 624,
+    "ksiCount": 178,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT CLIO",
+    "associatedPedestrianCasualtyCount": 573,
+    "ksiCount": 186,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES A CLASS",
+    "associatedPedestrianCasualtyCount": 570,
+    "ksiCount": 198,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN JUKE",
+    "associatedPedestrianCasualtyCount": 495,
+    "ksiCount": 159,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN MICRA",
+    "associatedPedestrianCasualtyCount": 480,
+    "ksiCount": 162,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA OCTAVIA",
+    "associatedPedestrianCasualtyCount": 470,
+    "ksiCount": 152,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA AYGO",
+    "associatedPedestrianCasualtyCount": 470,
+    "ksiCount": 140,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES E CLASS",
+    "associatedPedestrianCasualtyCount": 450,
+    "ksiCount": 139,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA COROLLA",
+    "associatedPedestrianCasualtyCount": 448,
+    "ksiCount": 136,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL INSIGNIA",
+    "associatedPedestrianCasualtyCount": 426,
+    "ksiCount": 140,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL MOKKA",
+    "associatedPedestrianCasualtyCount": 413,
+    "ksiCount": 122,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW 5 SERIES",
+    "associatedPedestrianCasualtyCount": 409,
+    "ksiCount": 141,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MINI COOPER",
+    "associatedPedestrianCasualtyCount": 409,
+    "ksiCount": 145,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT 500",
+    "associatedPedestrianCasualtyCount": 408,
+    "ksiCount": 129,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN PASSAT",
+    "associatedPedestrianCasualtyCount": 400,
+    "ksiCount": 129,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD MONDEO",
+    "associatedPedestrianCasualtyCount": 398,
+    "ksiCount": 129,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT LEON",
+    "associatedPedestrianCasualtyCount": 390,
+    "ksiCount": 134,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA SPORTAGE",
+    "associatedPedestrianCasualtyCount": 384,
+    "ksiCount": 124,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI A4",
+    "associatedPedestrianCasualtyCount": 379,
+    "ksiCount": 127,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD KUGA",
+    "associatedPedestrianCasualtyCount": 373,
+    "ksiCount": 133,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT IBIZA",
+    "associatedPedestrianCasualtyCount": 347,
+    "ksiCount": 116,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA FABIA",
+    "associatedPedestrianCasualtyCount": 334,
+    "ksiCount": 106,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN C3",
+    "associatedPedestrianCasualtyCount": 333,
+    "ksiCount": 114,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 208",
+    "associatedPedestrianCasualtyCount": 329,
+    "ksiCount": 123,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI I10",
+    "associatedPedestrianCasualtyCount": 311,
+    "ksiCount": 98,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN NOTE",
+    "associatedPedestrianCasualtyCount": 307,
+    "ksiCount": 108,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 207",
+    "associatedPedestrianCasualtyCount": 297,
+    "ksiCount": 74,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN C1",
+    "associatedPedestrianCasualtyCount": 292,
+    "ksiCount": 100,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN C4",
+    "associatedPedestrianCasualtyCount": 286,
+    "ksiCount": 84,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN TIGUAN",
+    "associatedPedestrianCasualtyCount": 281,
+    "ksiCount": 84,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI A1",
+    "associatedPedestrianCasualtyCount": 277,
+    "ksiCount": 92,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER DISCOVERY",
+    "associatedPedestrianCasualtyCount": 272,
+    "ksiCount": 80,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA PICANTO",
+    "associatedPedestrianCasualtyCount": 267,
+    "ksiCount": 91,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 308",
+    "associatedPedestrianCasualtyCount": 261,
+    "ksiCount": 69,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER RANGE ROVER EVOQUE",
+    "associatedPedestrianCasualtyCount": 260,
+    "ksiCount": 76,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT MEGANE",
+    "associatedPedestrianCasualtyCount": 239,
+    "ksiCount": 80,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA NIRO",
+    "associatedPedestrianCasualtyCount": 238,
+    "ksiCount": 66,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD KA",
+    "associatedPedestrianCasualtyCount": 237,
+    "ksiCount": 78,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW 2 SERIES",
+    "associatedPedestrianCasualtyCount": 220,
+    "ksiCount": 54,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 2008",
+    "associatedPedestrianCasualtyCount": 213,
+    "ksiCount": 56,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI IONIQ",
+    "associatedPedestrianCasualtyCount": 210,
+    "ksiCount": 60,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA AVENSIS",
+    "associatedPedestrianCasualtyCount": 210,
+    "ksiCount": 66,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD C-MAX",
+    "associatedPedestrianCasualtyCount": 207,
+    "ksiCount": 53,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT CAPTUR",
+    "associatedPedestrianCasualtyCount": 205,
+    "ksiCount": 51,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA 2",
+    "associatedPedestrianCasualtyCount": 204,
+    "ksiCount": 48,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI TUCSON",
+    "associatedPedestrianCasualtyCount": 202,
+    "ksiCount": 61,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI SWIFT",
+    "associatedPedestrianCasualtyCount": 197,
+    "ksiCount": 65,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW X5",
+    "associatedPedestrianCasualtyCount": 195,
+    "ksiCount": 81,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI I20",
+    "associatedPedestrianCasualtyCount": 195,
+    "ksiCount": 55,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 3008",
+    "associatedPedestrianCasualtyCount": 194,
+    "ksiCount": 51,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA RAV4",
+    "associatedPedestrianCasualtyCount": 192,
+    "ksiCount": 59,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT PUNTO",
+    "associatedPedestrianCasualtyCount": 191,
+    "ksiCount": 60,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA CEED",
+    "associatedPedestrianCasualtyCount": 190,
+    "ksiCount": 56,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN LEAF",
+    "associatedPedestrianCasualtyCount": 189,
+    "ksiCount": 52,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER RANGE ROVER SPORT",
+    "associatedPedestrianCasualtyCount": 187,
+    "ksiCount": 63,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI A6",
+    "associatedPedestrianCasualtyCount": 186,
+    "ksiCount": 52,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL MERIVA",
+    "associatedPedestrianCasualtyCount": 182,
+    "ksiCount": 54,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 107",
+    "associatedPedestrianCasualtyCount": 181,
+    "ksiCount": 55,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA C-HR",
+    "associatedPedestrianCasualtyCount": 180,
+    "ksiCount": 50,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES VITO",
+    "associatedPedestrianCasualtyCount": 171,
+    "ksiCount": 56,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI I30",
+    "associatedPedestrianCasualtyCount": 168,
+    "ksiCount": 54,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW 4 SERIES",
+    "associatedPedestrianCasualtyCount": 166,
+    "ksiCount": 55,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA 3",
+    "associatedPedestrianCasualtyCount": 166,
+    "ksiCount": 53,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN UP",
+    "associatedPedestrianCasualtyCount": 161,
+    "ksiCount": 49,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LONDON TAXIS INT. TX4",
+    "associatedPedestrianCasualtyCount": 160,
+    "ksiCount": 55,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI A5",
+    "associatedPedestrianCasualtyCount": 159,
+    "ksiCount": 55,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA CR-V",
+    "associatedPedestrianCasualtyCount": 152,
+    "ksiCount": 47,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MINI ONE",
+    "associatedPedestrianCasualtyCount": 150,
+    "ksiCount": 39,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA RIO",
+    "associatedPedestrianCasualtyCount": 147,
+    "ksiCount": 48,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN TOURAN",
+    "associatedPedestrianCasualtyCount": 145,
+    "ksiCount": 40,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD ECOSPORT",
+    "associatedPedestrianCasualtyCount": 142,
+    "ksiCount": 39,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN SHARAN",
+    "associatedPedestrianCasualtyCount": 142,
+    "ksiCount": 31,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD GALAXY",
+    "associatedPedestrianCasualtyCount": 141,
+    "ksiCount": 38,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI OUTLANDER",
+    "associatedPedestrianCasualtyCount": 140,
+    "ksiCount": 37,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI Q3",
+    "associatedPedestrianCasualtyCount": 139,
+    "ksiCount": 38,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN X-TRAIL",
+    "associatedPedestrianCasualtyCount": 137,
+    "ksiCount": 50,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD PUMA",
+    "associatedPedestrianCasualtyCount": 132,
+    "ksiCount": 48,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DACIA SANDERO",
+    "associatedPedestrianCasualtyCount": 128,
+    "ksiCount": 41,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD S-MAX",
+    "associatedPedestrianCasualtyCount": 125,
+    "ksiCount": 51,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL GRANDLAND",
+    "associatedPedestrianCasualtyCount": 122,
+    "ksiCount": 34,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEVC TX",
+    "associatedPedestrianCasualtyCount": 121,
+    "ksiCount": 38,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA SUPERB",
+    "associatedPedestrianCasualtyCount": 120,
+    "ksiCount": 43,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI Q2",
+    "associatedPedestrianCasualtyCount": 117,
+    "ksiCount": 31,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES GLA CLASS",
+    "associatedPedestrianCasualtyCount": 116,
+    "ksiCount": 26,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 108",
+    "associatedPedestrianCasualtyCount": 116,
+    "ksiCount": 43,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI Q5",
+    "associatedPedestrianCasualtyCount": 115,
+    "ksiCount": 43,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN DS3",
+    "associatedPedestrianCasualtyCount": 114,
+    "ksiCount": 42,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO XC90",
+    "associatedPedestrianCasualtyCount": 114,
+    "ksiCount": 40,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES CLA CLASS",
+    "associatedPedestrianCasualtyCount": 113,
+    "ksiCount": 41,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES GLC CLASS",
+    "associatedPedestrianCasualtyCount": 113,
+    "ksiCount": 32,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 307",
+    "associatedPedestrianCasualtyCount": 113,
+    "ksiCount": 39,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW X1",
+    "associatedPedestrianCasualtyCount": 112,
+    "ksiCount": 41,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR XF SERIES",
+    "associatedPedestrianCasualtyCount": 112,
+    "ksiCount": 36,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW X3",
+    "associatedPedestrianCasualtyCount": 111,
+    "ksiCount": 39,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER FREELANDER",
+    "associatedPedestrianCasualtyCount": 110,
+    "ksiCount": 44,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 206",
+    "associatedPedestrianCasualtyCount": 110,
+    "ksiCount": 43,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 109,
+    "ksiCount": 23,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA 6",
+    "associatedPedestrianCasualtyCount": 107,
+    "ksiCount": 29,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT PANDA",
+    "associatedPedestrianCasualtyCount": 106,
+    "ksiCount": 38,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG ZS",
+    "associatedPedestrianCasualtyCount": 106,
+    "ksiCount": 36,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO XC60",
+    "associatedPedestrianCasualtyCount": 105,
+    "ksiCount": 34,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES B CLASS",
+    "associatedPedestrianCasualtyCount": 103,
+    "ksiCount": 34,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL CROSSLAND",
+    "associatedPedestrianCasualtyCount": 103,
+    "ksiCount": 29,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO V40",
+    "associatedPedestrianCasualtyCount": 103,
+    "ksiCount": 28,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL VECTRA",
+    "associatedPedestrianCasualtyCount": 101,
+    "ksiCount": 39,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SMART FORTWO",
+    "associatedPedestrianCasualtyCount": 99,
+    "ksiCount": 37,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DACIA DUSTER",
+    "associatedPedestrianCasualtyCount": 98,
+    "ksiCount": 29,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MINI COUNTRYMAN",
+    "associatedPedestrianCasualtyCount": 97,
+    "ksiCount": 34,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS CT 200",
+    "associatedPedestrianCasualtyCount": 96,
+    "ksiCount": 28,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD FUSION",
+    "associatedPedestrianCasualtyCount": 94,
+    "ksiCount": 27,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI ALTO",
+    "associatedPedestrianCasualtyCount": 94,
+    "ksiCount": 32,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER RANGE ROVER",
+    "associatedPedestrianCasualtyCount": 92,
+    "ksiCount": 39,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TESLA MODEL 3",
+    "associatedPedestrianCasualtyCount": 92,
+    "ksiCount": 25,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN T-ROC",
+    "associatedPedestrianCasualtyCount": 92,
+    "ksiCount": 25,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT KADJAR",
+    "associatedPedestrianCasualtyCount": 90,
+    "ksiCount": 28,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN BERLINGO",
+    "associatedPedestrianCasualtyCount": 86,
+    "ksiCount": 24,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA HILUX",
+    "associatedPedestrianCasualtyCount": 86,
+    "ksiCount": 34,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN SCIROCCO",
+    "associatedPedestrianCasualtyCount": 86,
+    "ksiCount": 37,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA CRV",
+    "associatedPedestrianCasualtyCount": 85,
+    "ksiCount": 26,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI IX35",
+    "associatedPedestrianCasualtyCount": 83,
+    "ksiCount": 23,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT SCENIC",
+    "associatedPedestrianCasualtyCount": 82,
+    "ksiCount": 21,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN XSARA",
+    "associatedPedestrianCasualtyCount": 81,
+    "ksiCount": 23,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI KONA",
+    "associatedPedestrianCasualtyCount": 79,
+    "ksiCount": 22,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD B-MAX",
+    "associatedPedestrianCasualtyCount": 78,
+    "ksiCount": 20,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO XC40",
+    "associatedPedestrianCasualtyCount": 78,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA VENGA",
+    "associatedPedestrianCasualtyCount": 75,
+    "ksiCount": 24,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT ALHAMBRA",
+    "associatedPedestrianCasualtyCount": 75,
+    "ksiCount": 26,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES AMG CLASS",
+    "associatedPedestrianCasualtyCount": 74,
+    "ksiCount": 29,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 5008",
+    "associatedPedestrianCasualtyCount": 74,
+    "ksiCount": 22,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA VERSO",
+    "associatedPedestrianCasualtyCount": 73,
+    "ksiCount": 19,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI Q7",
+    "associatedPedestrianCasualtyCount": 72,
+    "ksiCount": 20,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES S CLASS",
+    "associatedPedestrianCasualtyCount": 70,
+    "ksiCount": 19,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA MX-5",
+    "associatedPedestrianCasualtyCount": 67,
+    "ksiCount": 31,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI S3",
+    "associatedPedestrianCasualtyCount": 66,
+    "ksiCount": 34,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL ADAM",
+    "associatedPedestrianCasualtyCount": 66,
+    "ksiCount": 21,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR XE SERIES",
+    "associatedPedestrianCasualtyCount": 65,
+    "ksiCount": 16,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG HS",
+    "associatedPedestrianCasualtyCount": 65,
+    "ksiCount": 20,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN BEETLE",
+    "associatedPedestrianCasualtyCount": 63,
+    "ksiCount": 21,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER DEFENDER",
+    "associatedPedestrianCasualtyCount": 60,
+    "ksiCount": 22,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI VITARA",
+    "associatedPedestrianCasualtyCount": 60,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL VIVA",
+    "associatedPedestrianCasualtyCount": 60,
+    "ksiCount": 16,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI TT",
+    "associatedPedestrianCasualtyCount": 59,
+    "ksiCount": 25,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT ATECA",
+    "associatedPedestrianCasualtyCount": 59,
+    "ksiCount": 20,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA YETI",
+    "associatedPedestrianCasualtyCount": 59,
+    "ksiCount": 20,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW I3",
+    "associatedPedestrianCasualtyCount": 58,
+    "ksiCount": 20,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DS DS3",
+    "associatedPedestrianCasualtyCount": 58,
+    "ksiCount": 18,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD GRAND C-MAX",
+    "associatedPedestrianCasualtyCount": 58,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA ACCORD",
+    "associatedPedestrianCasualtyCount": 58,
+    "ksiCount": 17,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES SLK CLASS",
+    "associatedPedestrianCasualtyCount": 58,
+    "ksiCount": 22,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA CITIGO",
+    "associatedPedestrianCasualtyCount": 57,
+    "ksiCount": 18,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SAAB 9-3",
+    "associatedPedestrianCasualtyCount": 56,
+    "ksiCount": 21,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR F-PACE",
+    "associatedPedestrianCasualtyCount": 53,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA RAPID",
+    "associatedPedestrianCasualtyCount": 53,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR X TYPE",
+    "associatedPedestrianCasualtyCount": 52,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA SORENTO",
+    "associatedPedestrianCasualtyCount": 52,
+    "ksiCount": 22,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT ZOE",
+    "associatedPedestrianCasualtyCount": 51,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI SX4",
+    "associatedPedestrianCasualtyCount": 51,
+    "ksiCount": 16,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI IX20",
+    "associatedPedestrianCasualtyCount": 50,
+    "ksiCount": 17,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI COLT",
+    "associatedPedestrianCasualtyCount": 49,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI GETZ",
+    "associatedPedestrianCasualtyCount": 48,
+    "ksiCount": 16,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI SANTA FE",
+    "associatedPedestrianCasualtyCount": 48,
+    "ksiCount": 22,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES CLK CLASS",
+    "associatedPedestrianCasualtyCount": 48,
+    "ksiCount": 17,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MINI CLUBMAN",
+    "associatedPedestrianCasualtyCount": 48,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA KODIAQ",
+    "associatedPedestrianCasualtyCount": 48,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD KA+",
+    "associatedPedestrianCasualtyCount": 47,
+    "ksiCount": 19,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI I40",
+    "associatedPedestrianCasualtyCount": 47,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI SHOGUN",
+    "associatedPedestrianCasualtyCount": 47,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA KAROQ",
+    "associatedPedestrianCasualtyCount": 47,
+    "ksiCount": 18,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA CX-5",
+    "associatedPedestrianCasualtyCount": 46,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES V CLASS",
+    "associatedPedestrianCasualtyCount": 44,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT ARONA",
+    "associatedPedestrianCasualtyCount": 44,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN ALMERA",
+    "associatedPedestrianCasualtyCount": 43,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL AGILA",
+    "associatedPedestrianCasualtyCount": 43,
+    "ksiCount": 17,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO V70",
+    "associatedPedestrianCasualtyCount": 43,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES ML CLASS",
+    "associatedPedestrianCasualtyCount": 42,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT TWINGO",
+    "associatedPedestrianCasualtyCount": 42,
+    "ksiCount": 16,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI CELERIO",
+    "associatedPedestrianCasualtyCount": 42,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW M1",
+    "associatedPedestrianCasualtyCount": 41,
+    "ksiCount": 19,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER RANGE ROVER VELAR",
+    "associatedPedestrianCasualtyCount": 41,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SMART FORFOUR",
+    "associatedPedestrianCasualtyCount": 41,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN TOUAREG",
+    "associatedPedestrianCasualtyCount": 41,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES CLS CLASS",
+    "associatedPedestrianCasualtyCount": 40,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TESLA MODEL Y",
+    "associatedPedestrianCasualtyCount": 40,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW 7 SERIES",
+    "associatedPedestrianCasualtyCount": 39,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA STONIC",
+    "associatedPedestrianCasualtyCount": 39,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES GLE CLASS",
+    "associatedPedestrianCasualtyCount": 39,
+    "ksiCount": 20,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT GRAND SCENIC",
+    "associatedPedestrianCasualtyCount": 39,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN JETTA",
+    "associatedPedestrianCasualtyCount": 39,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA INSIGHT",
+    "associatedPedestrianCasualtyCount": 38,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG 5",
+    "associatedPedestrianCasualtyCount": 38,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PORSCHE CAYENNE",
+    "associatedPedestrianCasualtyCount": 38,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL COMBO",
+    "associatedPedestrianCasualtyCount": 38,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN T-CROSS",
+    "associatedPedestrianCasualtyCount": 38,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN C2",
+    "associatedPedestrianCasualtyCount": 37,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS IS 300",
+    "associatedPedestrianCasualtyCount": 37,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN C5",
+    "associatedPedestrianCasualtyCount": 36,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DACIA LOGAN",
+    "associatedPedestrianCasualtyCount": 36,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO V50",
+    "associatedPedestrianCasualtyCount": 36,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI SPLASH",
+    "associatedPedestrianCasualtyCount": 35,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN ID3",
+    "associatedPedestrianCasualtyCount": 35,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW M3",
+    "associatedPedestrianCasualtyCount": 34,
+    "ksiCount": 15,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD TOURNEO",
+    "associatedPedestrianCasualtyCount": 33,
+    "ksiCount": 13,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA HR-V",
+    "associatedPedestrianCasualtyCount": 33,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA KAMIQ",
+    "associatedPedestrianCasualtyCount": 33,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO V60",
+    "associatedPedestrianCasualtyCount": 33,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR E-PACE",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JEEP CHEROKEE",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA CARENS",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT HORIZON",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT ALTEA",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 16,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA PRIUS+",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL ANTARA",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN CADDYMAXI",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO S40",
+    "associatedPedestrianCasualtyCount": 32,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW X6",
+    "associatedPedestrianCasualtyCount": 31,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES CLC CLASS",
+    "associatedPedestrianCasualtyCount": 31,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 508",
+    "associatedPedestrianCasualtyCount": 31,
+    "ksiCount": 13,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT MII",
+    "associatedPedestrianCasualtyCount": 31,
+    "ksiCount": 13,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI IGNIS",
+    "associatedPedestrianCasualtyCount": 31,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA IQ",
+    "associatedPedestrianCasualtyCount": 31,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHEVROLET MATIZ",
+    "associatedPedestrianCasualtyCount": 30,
+    "ksiCount": 13,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JEEP RENEGADE",
+    "associatedPedestrianCasualtyCount": 30,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN PULSAR",
+    "associatedPedestrianCasualtyCount": 30,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PORSCHE MACAN",
+    "associatedPedestrianCasualtyCount": 30,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO C30",
+    "associatedPedestrianCasualtyCount": 30,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW 6 SERIES",
+    "associatedPedestrianCasualtyCount": 29,
+    "ksiCount": 13,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHEVROLET SPARK",
+    "associatedPedestrianCasualtyCount": 29,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI ASX",
+    "associatedPedestrianCasualtyCount": 28,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA SOUL",
+    "associatedPedestrianCasualtyCount": 27,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS NX 300",
+    "associatedPedestrianCasualtyCount": 27,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT PARTNER",
+    "associatedPedestrianCasualtyCount": 27,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN CC",
+    "associatedPedestrianCasualtyCount": 27,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI TTS",
+    "associatedPedestrianCasualtyCount": 26,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS RX 400",
+    "associatedPedestrianCasualtyCount": 26,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG 3",
+    "associatedPedestrianCasualtyCount": 26,
+    "ksiCount": 12,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN PIXO",
+    "associatedPedestrianCasualtyCount": 26,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT EXPERT",
+    "associatedPedestrianCasualtyCount": 26,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI GRAND VITARA",
+    "associatedPedestrianCasualtyCount": 26,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ABARTH 595",
+    "associatedPedestrianCasualtyCount": 25,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR I-PACE",
+    "associatedPedestrianCasualtyCount": 25,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS RX 450",
+    "associatedPedestrianCasualtyCount": 25,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES EQC CLASS",
+    "associatedPedestrianCasualtyCount": 25,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA LANDCRUISER",
+    "associatedPedestrianCasualtyCount": 25,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW X2",
+    "associatedPedestrianCasualtyCount": 24,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW X4",
+    "associatedPedestrianCasualtyCount": 24,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA XCEED",
+    "associatedPedestrianCasualtyCount": 24,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG 4",
+    "associatedPedestrianCasualtyCount": 24,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 23,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUBARU FORESTER",
+    "associatedPedestrianCasualtyCount": 23,
+    "ksiCount": 14,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUBARU IMPREZA",
+    "associatedPedestrianCasualtyCount": 23,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI JIMNY",
+    "associatedPedestrianCasualtyCount": 23,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS UX 250",
+    "associatedPedestrianCasualtyCount": 22,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA 5",
+    "associatedPedestrianCasualtyCount": 22,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MINI JOHN COOPER WORKS",
+    "associatedPedestrianCasualtyCount": 22,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 407",
+    "associatedPedestrianCasualtyCount": 22,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT KANGOO",
+    "associatedPedestrianCasualtyCount": 22,
+    "ksiCount": 11,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW Z4",
+    "associatedPedestrianCasualtyCount": 21,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TESLA MODEL S",
+    "associatedPedestrianCasualtyCount": 21,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ALFA ROMEO GIULIETTA",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI A7",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI A8",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 10,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI E-TRON",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI AMICA",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS IS 250",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN CADDY",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN ID4",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO S60",
+    "associatedPedestrianCasualtyCount": 20,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI Q4",
+    "associatedPedestrianCasualtyCount": 19,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI S4",
+    "associatedPedestrianCasualtyCount": 19,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR XJ SERIES",
+    "associatedPedestrianCasualtyCount": 19,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JEEP COMPASS",
+    "associatedPedestrianCasualtyCount": 19,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ALFA ROMEO MITO",
+    "associatedPedestrianCasualtyCount": 18,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHEVROLET ORLANDO",
+    "associatedPedestrianCasualtyCount": 18,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA FR-V",
+    "associatedPedestrianCasualtyCount": 18,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI MIRAGE",
+    "associatedPedestrianCasualtyCount": 18,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI WAGON R+",
+    "associatedPedestrianCasualtyCount": 18,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN FOX",
+    "associatedPedestrianCasualtyCount": 18,
+    "ksiCount": 9,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHEVROLET AVEO",
+    "associatedPedestrianCasualtyCount": 17,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT BRAVO",
+    "associatedPedestrianCasualtyCount": 17,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 17,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR S TYPE",
+    "associatedPedestrianCasualtyCount": 17,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI ECLIPSE",
+    "associatedPedestrianCasualtyCount": 17,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA ENYAQ",
+    "associatedPedestrianCasualtyCount": 17,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA ROOMSTER",
+    "associatedPedestrianCasualtyCount": 17,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN URBAN",
+    "associatedPedestrianCasualtyCount": 17,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW M2",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT 500L",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN NV200",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT MODUS",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ROVER 75",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT TARRACO",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA PREVIA",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN EOS",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO XC70",
+    "associatedPedestrianCasualtyCount": 16,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW I4",
+    "associatedPedestrianCasualtyCount": 15,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHEVROLET CAPTIVA",
+    "associatedPedestrianCasualtyCount": 15,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD MUSTANG MACH-E",
+    "associatedPedestrianCasualtyCount": 15,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES GLB CLASS",
+    "associatedPedestrianCasualtyCount": 15,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT LAGUNA",
+    "associatedPedestrianCasualtyCount": 15,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT TOLEDO",
+    "associatedPedestrianCasualtyCount": 15,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SKODA SCALA",
+    "associatedPedestrianCasualtyCount": 15,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI BALENO",
+    "associatedPedestrianCasualtyCount": 15,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI RS3",
+    "associatedPedestrianCasualtyCount": 14,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN DS4",
+    "associatedPedestrianCasualtyCount": 14,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CUPRA FORMENTOR",
+    "associatedPedestrianCasualtyCount": 14,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT 500X",
+    "associatedPedestrianCasualtyCount": 14,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PORSCHE TAYCAN",
+    "associatedPedestrianCasualtyCount": 14,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT TRAFIC",
+    "associatedPedestrianCasualtyCount": 14,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN LUPO",
+    "associatedPedestrianCasualtyCount": 14,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO V90",
+    "associatedPedestrianCasualtyCount": 14,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI S5",
+    "associatedPedestrianCasualtyCount": 13,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI MATRIX",
+    "associatedPedestrianCasualtyCount": 13,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA OPTIMA",
+    "associatedPedestrianCasualtyCount": 13,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "POLESTAR 2",
+    "associatedPedestrianCasualtyCount": 13,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA CELICA",
+    "associatedPedestrianCasualtyCount": 13,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW M4",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 8,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT DOBLO",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT TIPO",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI BAYON",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA CX-3",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA CX-30",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI LANCER",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PORSCHE 911",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PORSCHE PANAMERA",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TESLA MODEL X",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN BORA",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN TAIGO",
+    "associatedPedestrianCasualtyCount": 12,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI A2",
+    "associatedPedestrianCasualtyCount": 11,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHEVROLET CRUZE",
+    "associatedPedestrianCasualtyCount": 11,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD MUSTANG",
+    "associatedPedestrianCasualtyCount": 11,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 11,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN PATHFINDER",
+    "associatedPedestrianCasualtyCount": 11,
+    "ksiCount": 7,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT E7",
+    "associatedPedestrianCasualtyCount": 11,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT ARKANA",
+    "associatedPedestrianCasualtyCount": 11,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO S80",
+    "associatedPedestrianCasualtyCount": 11,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI Q8",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW M5",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA PRO CEED",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS RX450",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES EQA CLASS",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES GL CLASS",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PORSCHE BOXSTER",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SMART CITY",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA Model Missing",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL TIGRA",
+    "associatedPedestrianCasualtyCount": 10,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ALFA ROMEO GIULIA",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI RS4",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW IX",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHRYSLER 300C",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHRYSLER VOYAGER",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 6,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHRYSLER YPSILON",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA EV6",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA SEDONA",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS GS 300",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SSANGYONG TIVOLI",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL VIVARO",
+    "associatedPedestrianCasualtyCount": 9,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ABARTH 500",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI RS6",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BENTLEY CONTINENTAL",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DAIHATSU SIRION",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI COUPE",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI I800",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "INFINITI Q30",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR XK SERIES",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JEEP GRAND CHEROKEE",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS IS 200",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS IS 220",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES SL CLASS",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN ARIYA",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 406",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 5,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT RCZ",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN ARTEON",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN TRANSPORTER",
+    "associatedPedestrianCasualtyCount": 8,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ALFA ROMEO 159",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DAIHATSU TERIOS",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DODGE CALIBER",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA CX5",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MINI FIRST",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN PRIMERA",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUBARU XV",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA GT86",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO C 30",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO C70",
+    "associatedPedestrianCasualtyCount": 7,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI SQ5",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW 8 SERIES",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW IX3",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DACIA JOGGER",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 4,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD EDGE",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JEEP WRANGLER",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LONDON TAXIS INT. TXII",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES EQB CLASS",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES Model Missing",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 106",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT PREMIER",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SAAB 9-5",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SSANGYONG KORANDO",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA ESTIMA",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL ASTRAVAN",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN ID5",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 6,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI SQ7",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHEVROLET LACETTI",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CUPRA BORN",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD ESCORT",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS ES 300",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS GS 450",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS IS250",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MCC SMART",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES EQE CLASS",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG XS",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "OTHER BRITISH MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ROVER 25",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT AROSA",
+    "associatedPedestrianCasualtyCount": 5,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHEVROLET KALOS",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT QUBO",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR F-TYPE",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAND ROVER 90",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA CX3",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES VIANO",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MINI PACEMAN",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN Model Missing",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PORSCHE 718",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT KOLEOS",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SEAT EXEO",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUBARU LEGACY",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA BZ4X",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA MR2",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA STARLET",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA URBAN CRUISER",
+    "associatedPedestrianCasualtyCount": 4,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI RSQ3",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 3,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI S1",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW I8",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW Z3",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN DS5",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN SAXO",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DS DS4",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT FIORINO",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT SCUDO",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD TRANSIT CUSTOM",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA Model Missing",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LAMBORGHINI URUS",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS IS220",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MASERATI GHIBLI",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA CX-60",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA Model Missing",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA RX-8",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN MURANO",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 306",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT RIFTER",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT AUSTRAL",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT Model Missing",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUBARU OUTBACK",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL CASCADA",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 3,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN DISPATCH",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CUPRA LEON",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD INDEPENDENCE",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD Model Missing",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD STREETKA",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA CR-Z",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA S2000",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HONDA ZR-V SPORT",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JAGUAR F TYPE",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JEEP AVENGER",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS IS200",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS IS300",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS NX 350",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS RX400",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS UX 250H",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES R CLASS",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES SPRINTER",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG GS",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI GRANDIS",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT BIPPER",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PORSCHE CAYMAN",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ROVER 45",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SSANGYONG RODIUS",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "SUZUKI SWACE",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL SIGNUM",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN CARAVELLE",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN ID BUZZ",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN Model Missing",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN UP BY",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 2,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO C40",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO Model Missing",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLVO S90",
+    "associatedPedestrianCasualtyCount": 2,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ALFA ROMEO 147",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "ALFA ROMEO STELVIO",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "AUDI R8",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BMW Model Missing",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "BYD ATTO 3",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHRYSLER GRAND VOYAGER",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CHRYSLER PT CRUISER",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN C-CROSSER",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN MODEL MISSING",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "CITROEN NEMO",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "DS DS7",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FIAT SEICENTO",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD RANGER",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "FORD TRANSIT CONNECT",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "HYUNDAI ACCENT",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "JEEP PATRIOT",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "KIA CERATO",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS GS300",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS NX300",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS RX 300",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "LEXUS RX300",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MASERATI LEVANTE",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA 323",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MAZDA RX8",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES CITAN",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES GLS CLASS",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MERCEDES SLC CLASS",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG 6",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG TF",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MG ZR",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MINI ROADSTER",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI CARISMA",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI Model Missing",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "MITSUBISHI SPACE STAR",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN 350",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "NISSAN PRIMASTAR",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 1007",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT 408",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 1,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT BOXER",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PEUGEOT Model Missing",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "PIAGGIO MP3",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "RENAULT MASTER",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "TOYOTA PROACE",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VAUXHALL MOVANO",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  },
+  {
+    "modelFamily": "VOLKSWAGEN MULTIVAN",
+    "associatedPedestrianCasualtyCount": 1,
+    "ksiCount": 0,
+    "currentClassificationStatus": "unclassified"
+  }
+]

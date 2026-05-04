@@ -121,6 +121,9 @@ test("build:data writes latest-five-year pedestrian casualty metadata from STATS
   });
 
   const metadata = JSON.parse(await readFile(join(outputDir, "metadata.json"), "utf8"));
+  const taxonomyReviewQueue = JSON.parse(
+    await readFile(join(outputDir, "taxonomy_review", "queue.json"), "utf8"),
+  );
 
   assert.deepEqual(metadata, {
     dataPeriod: "2019-2023",
@@ -128,6 +131,7 @@ test("build:data writes latest-five-year pedestrian casualty metadata from STATS
     ksiCount: 2,
     source: "DfT STATS19 road safety open data",
   });
+  assert.deepEqual(taxonomyReviewQueue, []);
 });
 
 test("build:data accepts current DfT casualty files that use collision_year", async () => {
@@ -1629,5 +1633,238 @@ test("check fails when metadata KSI count exceeds casualty count", async () => {
       },
     }),
     /metadata.ksiCount/,
+  );
+});
+
+test("build:data writes a Taxonomy Review Queue ranked by associated pedestrian casualty count", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+  const reviewOutputDir = await makeTempDir("taxonomy-review");
+
+  await writeFile(
+    join(rawDir, "casualty.csv"),
+    [
+      "collision_index,collision_year,vehicle_reference,casualty_class,casualty_severity",
+      "C1,2024,1,3,3",
+      "C2,2024,1,3,2",
+      "C3,2024,1,3,3",
+      "C4,2024,1,3,1",
+      "C5,2024,1,1,1",
+    ].join("\n"),
+  );
+  await writeFile(
+    join(rawDir, "vehicle.csv"),
+    [
+      "collision_index,collision_year,vehicle_reference,vehicle_type,generic_make_model",
+      "C1,2024,1,9,MODEL ALPHA",
+      "C2,2024,1,9,MODEL BRAVO",
+      "C3,2024,1,8,MODEL ALPHA",
+      "C4,2024,1,9,MODEL CHARLIE",
+      "C5,2024,1,9,MODEL ALPHA",
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+      TAXONOMY_REVIEW_OUTPUT_DIR: reviewOutputDir,
+    },
+  });
+
+  const queue = JSON.parse(await readFile(join(reviewOutputDir, "queue.json"), "utf8"));
+
+  assert.deepEqual(queue, [
+    {
+      modelFamily: "MODEL ALPHA",
+      associatedPedestrianCasualtyCount: 2,
+      ksiCount: 0,
+      currentClassificationStatus: "unclassified",
+    },
+    {
+      modelFamily: "MODEL BRAVO",
+      associatedPedestrianCasualtyCount: 1,
+      ksiCount: 1,
+      currentClassificationStatus: "unclassified",
+    },
+    {
+      modelFamily: "MODEL CHARLIE",
+      associatedPedestrianCasualtyCount: 1,
+      ksiCount: 1,
+      currentClassificationStatus: "unclassified",
+    },
+  ]);
+});
+
+test("build:data excludes Classifiable Taxonomy Row entries from the Taxonomy Review Queue", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+  const reviewOutputDir = await makeTempDir("taxonomy-review");
+  const taxonomyPath = join(await makeTempDir("taxonomy"), "model_shape_v1.csv");
+
+  await writeFile(
+    join(rawDir, "casualty.csv"),
+    [
+      "collision_index,collision_year,vehicle_reference,casualty_class,casualty_severity",
+      "C1,2024,1,3,3",
+      "C2,2024,1,3,2",
+      "C3,2024,1,3,1",
+    ].join("\n"),
+  );
+  await writeFile(
+    join(rawDir, "vehicle.csv"),
+    [
+      "collision_index,collision_year,vehicle_reference,vehicle_type,generic_make_model",
+      "C1,2024,1,9,MODEL CLASSIFIED",
+      "C2,2024,1,9,MODEL UNREVIEWED",
+      "C3,2024,1,9,MODEL LOW CONFIDENCE",
+    ].join("\n"),
+  );
+  await writeFile(
+    taxonomyPath,
+    [
+      "generic_make_model,shape_class,confidence,review_status,notes,source_url",
+      "MODEL CLASSIFIED,suv_crossover,high,reviewed,,https://example.com/classified",
+      "MODEL UNREVIEWED,suv_crossover,high,unreviewed,,https://example.com/unreviewed",
+      "MODEL LOW CONFIDENCE,other_passenger_car,low,reviewed,,https://example.com/low",
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+      TAXONOMY_REVIEW_OUTPUT_DIR: reviewOutputDir,
+      MODEL_SHAPE_TAXONOMY_PATH: taxonomyPath,
+    },
+  });
+
+  const queue = JSON.parse(await readFile(join(reviewOutputDir, "queue.json"), "utf8"));
+
+  assert.deepEqual(queue, [
+    {
+      modelFamily: "MODEL LOW CONFIDENCE",
+      associatedPedestrianCasualtyCount: 1,
+      ksiCount: 1,
+      currentClassificationStatus: "reviewed_low_confidence",
+    },
+    {
+      modelFamily: "MODEL UNREVIEWED",
+      associatedPedestrianCasualtyCount: 1,
+      ksiCount: 1,
+      currentClassificationStatus: "unreviewed",
+    },
+  ]);
+});
+
+test("build:data keeps missing redacted unreported and non-passenger-car records out of the Taxonomy Review Queue", async () => {
+  const rawDir = await makeTempDir("raw");
+  const outputDir = await makeTempDir("output");
+  const reviewOutputDir = await makeTempDir("taxonomy-review");
+
+  await writeFile(
+    join(rawDir, "casualty.csv"),
+    [
+      "collision_index,collision_year,vehicle_reference,casualty_class,casualty_severity",
+      "C1,2024,1,3,3",
+      "C2,2024,1,3,2",
+      "C3,2024,1,3,1",
+      "C4,2024,1,3,3",
+      "C5,2024,1,3,3",
+      "C6,2024,1,3,2",
+    ].join("\n"),
+  );
+  await writeFile(
+    join(rawDir, "vehicle.csv"),
+    [
+      "collision_index,collision_year,vehicle_reference,vehicle_type,generic_make_model",
+      "C1,2024,1,9,MODEL REVIEW ME",
+      "C2,2024,1,9,",
+      "C3,2024,1,9,-1",
+      "C4,2024,1,9,MAKE AND MODEL REDACTED",
+      "C5,2024,1,9,UNREPORTED",
+      "C6,2024,1,11,MODEL BUS",
+    ].join("\n"),
+  );
+
+  await execFileAsync("node", ["scripts/build/build-dashboard-data.mjs"], {
+    env: {
+      ...process.env,
+      STATS19_RAW_DIR: rawDir,
+      DASHBOARD_OUTPUT_DIR: outputDir,
+      TAXONOMY_REVIEW_OUTPUT_DIR: reviewOutputDir,
+    },
+  });
+
+  const queue = JSON.parse(await readFile(join(reviewOutputDir, "queue.json"), "utf8"));
+
+  assert.deepEqual(queue, [
+    {
+      modelFamily: "MODEL REVIEW ME",
+      associatedPedestrianCasualtyCount: 1,
+      ksiCount: 0,
+      currentClassificationStatus: "unclassified",
+    },
+  ]);
+});
+
+test("check fails when Taxonomy Review Queue rows have invalid counts", async () => {
+  const outputDir = await makeTempDir("output");
+  const reviewOutputDir = await makeTempDir("taxonomy-review");
+
+  await writeFile(
+    join(outputDir, "metadata.json"),
+    JSON.stringify(
+      {
+        dataPeriod: "2019-2023",
+        casualtyCount: 1,
+        ksiCount: 0,
+        source: "DfT STATS19 road safety open data",
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(join(outputDir, "patterns.json"), "[]\n");
+  await writeFile(
+    join(outputDir, "shape-signals.json"),
+    JSON.stringify(
+      {
+        suvCrossover: 0,
+        otherPassengerCar: 0,
+        unknownOrUnclassified: 1,
+        notPassengerCar: 0,
+      },
+      null,
+      2,
+    ),
+  );
+  await writeFile(
+    join(reviewOutputDir, "queue.json"),
+    JSON.stringify(
+      [
+        {
+          modelFamily: "MODEL REVIEW ME",
+          associatedPedestrianCasualtyCount: "one",
+          ksiCount: 0,
+          currentClassificationStatus: "unclassified",
+        },
+      ],
+      null,
+      2,
+    ),
+  );
+
+  await assert.rejects(
+    execFileAsync("node", ["scripts/check/check-outputs.mjs"], {
+      env: {
+        ...process.env,
+        DASHBOARD_OUTPUT_DIR: outputDir,
+        TAXONOMY_REVIEW_OUTPUT_DIR: reviewOutputDir,
+      },
+    }),
+    /associatedPedestrianCasualtyCount/,
   );
 });

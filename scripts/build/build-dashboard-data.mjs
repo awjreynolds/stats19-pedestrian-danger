@@ -22,6 +22,11 @@ const excludedPatternFields = new Set([
 const outputDir =
   process.env.DASHBOARD_OUTPUT_DIR ??
   fileURLToPath(new URL("../../outputs/dashboard/", import.meta.url));
+const taxonomyReviewOutputDir =
+  process.env.TAXONOMY_REVIEW_OUTPUT_DIR ??
+  (process.env.DASHBOARD_OUTPUT_DIR
+    ? fileURLToPath(new URL("taxonomy_review/", pathToFileURL(`${outputDir}/`)))
+    : fileURLToPath(new URL("../../outputs/taxonomy_review/", import.meta.url)));
 const rawDir =
   process.env.STATS19_RAW_DIR ??
   fileURLToPath(new URL("../../data/raw/", import.meta.url));
@@ -29,10 +34,12 @@ const taxonomyPath =
   process.env.MODEL_SHAPE_TAXONOMY_PATH ??
   fileURLToPath(new URL("../../data/taxonomies/model_shape_v1.csv", import.meta.url));
 const outputDirUrl = pathToFileURL(`${outputDir}/`);
+const taxonomyReviewOutputDirUrl = pathToFileURL(`${taxonomyReviewOutputDir}/`);
 const rawDirUrl = pathToFileURL(`${rawDir}/`);
 const taxonomyUrl = pathToFileURL(taxonomyPath);
 
 await mkdir(outputDir, { recursive: true });
+await mkdir(taxonomyReviewOutputDir, { recursive: true });
 
 function parseCsv(text) {
   const rows = text.trim().split(/\r?\n/);
@@ -248,6 +255,29 @@ function isClassifiableTaxonomyRow(row) {
   );
 }
 
+function getTaxonomyClassificationStatus(row) {
+  if (!row) {
+    return "unclassified";
+  }
+  if (row.review_status === "reviewed" && row.confidence !== "high") {
+    return "reviewed_low_confidence";
+  }
+  if (row.review_status === "reviewed" && !row.source_url?.trim()) {
+    return "reviewed_missing_source";
+  }
+  return row.review_status || "unclassified";
+}
+
+function isReviewableModelFamily(value) {
+  const normalizedValue = value?.trim().toUpperCase();
+  return (
+    Boolean(normalizedValue) &&
+    normalizedValue !== "-1" &&
+    normalizedValue !== "UNREPORTED" &&
+    !normalizedValue.includes("REDACTED")
+  );
+}
+
 function buildAssociatedVehicleLookup(vehicleRows) {
   return new Map(
     vehicleRows
@@ -354,12 +384,56 @@ function buildShapeSignals(rows, vehicleRows, taxonomyRows) {
   };
 }
 
+function buildTaxonomyReviewQueue(rows, vehicleRows, taxonomyRows) {
+  const pedestrianRows = getPedestrianRowsForLatestYears(rows, getLatestYears(rows));
+  const associatedVehicleLookup = buildAssociatedVehicleLookup(vehicleRows);
+  const taxonomyLookup = new Map(taxonomyRows.map((row) => [row.generic_make_model, row]));
+  const queueMap = new Map();
+
+  for (const row of pedestrianRows) {
+    const associatedVehicle = associatedVehicleLookup.get(getAssociatedVehicleKey(row));
+    if (!associatedVehicle || !isPassengerCarEligible(associatedVehicle)) {
+      continue;
+    }
+
+    const modelFamily = associatedVehicle.generic_make_model?.trim();
+    if (!isReviewableModelFamily(modelFamily)) {
+      continue;
+    }
+
+    const taxonomyRow = taxonomyLookup.get(modelFamily);
+    if (taxonomyRow && isClassifiableTaxonomyRow(taxonomyRow)) {
+      continue;
+    }
+
+    const queueRow = queueMap.get(modelFamily) ?? {
+      modelFamily,
+      associatedPedestrianCasualtyCount: 0,
+      ksiCount: 0,
+      currentClassificationStatus: getTaxonomyClassificationStatus(taxonomyRow),
+    };
+
+    queueRow.associatedPedestrianCasualtyCount += 1;
+    if (isKsi(row)) {
+      queueRow.ksiCount += 1;
+    }
+    queueMap.set(modelFamily, queueRow);
+  }
+
+  return [...queueMap.values()].sort(
+    (a, b) =>
+      b.associatedPedestrianCasualtyCount - a.associatedPedestrianCasualtyCount ||
+      a.modelFamily.localeCompare(b.modelFamily),
+  );
+}
+
 const casualtyRows = await readCasualtyRows();
 const vehicleRows = await readVehicleRows();
 const taxonomyRows = await readTaxonomyRows();
 const metadata = buildMetadata(casualtyRows);
 const patterns = buildPatterns(casualtyRows);
 const shapeSignals = buildShapeSignals(casualtyRows, vehicleRows, taxonomyRows);
+const taxonomyReviewQueue = buildTaxonomyReviewQueue(casualtyRows, vehicleRows, taxonomyRows);
 
 await writeFile(
   new URL("metadata.json", outputDirUrl),
@@ -371,6 +445,11 @@ await writeFile(new URL("patterns.json", outputDirUrl), `${JSON.stringify(patter
 await writeFile(
   new URL("shape-signals.json", outputDirUrl),
   `${JSON.stringify(shapeSignals, null, 2)}\n`,
+);
+
+await writeFile(
+  new URL("queue.json", taxonomyReviewOutputDirUrl),
+  `${JSON.stringify(taxonomyReviewQueue, null, 2)}\n`,
 );
 
 console.log("Wrote dashboard outputs.");
