@@ -12,4 +12,4 @@ Uses the default five-label triage vocabulary. See `docs/agents/triage-labels.md
 
 ### Domain docs
 
-Single-context repo: read root `CONTEXT.md` and root `docs/adr/` when present. See `docs/agents/domain.md`.
+For domain behaviour or design changes, read root `CONTEXT.md`, the relevant ADRs under `docs/adr/`, and `docs/agents/domain.md`.
